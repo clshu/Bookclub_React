@@ -2,7 +2,7 @@
 module.exports = function(sequelize, DataTypes) {
   var Rating = sequelize.define('Rating', {
     ratingsid: DataTypes.STRING,
-    stars: DataTypes.NUMBER,
+    stars: DataTypes.INTEGER,
     comment: DataTypes.STRING,
     ratedon: DataTypes.DATE,
     bookid: DataTypes.STRING,
