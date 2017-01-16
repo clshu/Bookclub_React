@@ -1,21 +1,27 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('Books', {
+    return queryInterface.createTable('Ratings', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      bookid: {
+      stars: {
+        type: Sequelize.INTEGER
+      },
+      comment: {
         type: Sequelize.STRING
       },
-      title: {
-        type: Sequelize.STRING
+      ratedon: {
+        type: Sequelize.DATE
       },
-      author: {
-        type: Sequelize.STRING
+      bookId: {
+        type: Sequelize.INTEGER
+      },
+      memberId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -28,6 +34,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Books');
+    return queryInterface.dropTable('Ratings');
   }
 };

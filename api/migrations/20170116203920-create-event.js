@@ -1,30 +1,24 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('Ratings', {
+    return queryInterface.createTable('Events', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      ratingsid: {
-        type: Sequelize.STRING
-      },
-      stars: {
-        type: Sequelize.INTEGER
-      },
-      comment: {
-        type: Sequelize.STRING
-      },
-      ratedon: {
+      eventdt: {
         type: Sequelize.DATE
       },
-      bookid: {
+      eventtime: {
         type: Sequelize.STRING
       },
-      memberid: {
+      eventnotes: {
         type: Sequelize.STRING
+      },
+      memberId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -37,6 +31,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Ratings');
+    return queryInterface.dropTable('Events');
   }
 };

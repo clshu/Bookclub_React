@@ -1,0 +1,84 @@
+
+Members table
+
+
+fname
+lname
+address1
+address2
+city
+state
+zip
+mobile
+email
+favbook1
+favbook2
+favbook3
+aboutme
+joindt
+piclink
+username
+password
+
+
+sequelize model:create --name Member --attributes "fname:string,lname:string,address1:string,address2:string,city:string,state:string,zip:string,mobile:string,email:string,favbook1:string,favbook2:string,favbook3:string,aboutme:string,joindt:Date,picture:string,username:string,password:string"
+
+
+
+---------------------------------------------------
+Events table
+
+id
+eventdt
+eventtime
+eventnotes
+memberId
+
+sequelize model:create --name Event --attributes "eventdt:Date,eventtime:string,eventnotes:string,memberId:integer"
+
+
+----------------------------------------------------------
+
+Books table
+
+id
+title
+author
+eventId
+
+sequelize model:create --name Book --attributes "title:string,author:string,eventId:integer"
+
+---------------------------------------------------------------
+
+Ratings table
+
+id
+stars
+comment
+ratedon
+bookId
+memberId
+
+sequelize model:create --name Rating --attributes "stars:integer,comment:string,ratedon:date,bookId:integer,memberId:integer"
+----------------------
+
+Rsvps table
+
+id
+response
+rsvpon
+eventid
+memberid
+
+sequelize model:create --name Rsvp --attributes "response:string,rsvpon:date,eventId:integer,memberId:integer"
+
+----------------------------------------------------------------
+
+Posts table
+
+id
+content
+postedon
+memberId
+
+sequelize model:create --name Post --attributes "content:string,postedon:date,memberId:integer"

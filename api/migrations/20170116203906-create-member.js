@@ -8,9 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      memberid: {
-        type: Sequelize.STRING
-      },
       fname: {
         type: Sequelize.STRING
       },
@@ -52,6 +49,9 @@ module.exports = {
       },
       joindt: {
         type: Sequelize.DATE
+      },
+      picture: {
+        type: Sequelize.STRING
       },
       username: {
         type: Sequelize.STRING

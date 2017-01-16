@@ -1,27 +1,21 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('Rsvps', {
+    return queryInterface.createTable('Posts', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      rsvpid: {
+      content: {
         type: Sequelize.STRING
       },
-      response: {
-        type: Sequelize.STRING
-      },
-      rsvpon: {
+      postedon: {
         type: Sequelize.DATE
       },
-      eventid: {
-        type: Sequelize.STRING
-      },
-      memberid: {
-        type: Sequelize.STRING
+      memberId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -34,6 +28,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Rsvps');
+    return queryInterface.dropTable('Posts');
   }
 };

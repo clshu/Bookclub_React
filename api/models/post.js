@@ -1,14 +1,14 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Post = sequelize.define('Post', {
-    postid: DataTypes.STRING,
-    comment: DataTypes.STRING,
+    content: DataTypes.STRING,
     postedon: DataTypes.DATE,
-    memberid: DataTypes.STRING
+    memberId: DataTypes.INTEGER
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        Post.belongsTo(models.Member);
       }
     }
   });
