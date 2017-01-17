@@ -21,7 +21,7 @@ username
 password
 
 
-sequelize model:create --name Member --attributes "fname:string,lname:string,address1:string,address2:string,city:string,state:string,zip:string,mobile:string,email:string,favbook1:string,favbook2:string,favbook3:string,aboutme:string,joindt:Date,picture:string,username:string,password:string"
+sequelize model:create --name Member --attributes "fname:string,lname:string,address1:string,address2:string,city:string,state:string,zip:string,mobile:string,email:string,favbook1:string,favbook2:string,favbook3:string,aboutme:string,joindt:Date,piclink:string,username:string,password:string"
 
 
 
@@ -33,7 +33,7 @@ dt
 notes
 memberId
 
-sequelize model:create --name Event --attributes "dt:Date,notes:string,memberId:integer"
+sequelize model:create --name Event --attributes "dt:Date,notes:string"
 
 
 ----------------------------------------------------------
@@ -45,7 +45,7 @@ title
 author
 eventId
 
-sequelize model:create --name Book --attributes "title:string,author:string,eventId:integer"
+sequelize model:create --name Book --attributes "title:string,author:string"
 
 ---------------------------------------------------------------
 
@@ -58,7 +58,7 @@ ratedon
 bookId
 memberId
 
-sequelize model:create --name Rating --attributes "stars:integer,comment:string,ratedon:date,bookId:integer,memberId:integer"
+sequelize model:create --name Rating --attributes "stars:integer,comment:string,ratedon:date,bookId:integer"
 ----------------------
 
 Rsvps table
@@ -66,10 +66,10 @@ Rsvps table
 id
 response
 rsvpon
-eventid
-memberid
+eventId
+memberId
 
-sequelize model:create --name Rsvp --attributes "response:string,rsvpon:date,eventId:integer,memberId:integer"
+sequelize model:create --name Rsvp --attributes "response:string,rsvpon:date"
 
 ----------------------------------------------------------------
 
@@ -80,4 +80,4 @@ content
 postedon
 memberId
 
-sequelize model:create --name Post --attributes "content:string,postedon:date,memberId:integer"
+sequelize model:create --name Post --attributes "content:string,postedon:date"

@@ -50,7 +50,7 @@ module.exports = {
       joindt: {
         type: Sequelize.DATE
       },
-      picture: {
+      piclink: {
         type: Sequelize.STRING
       },
       username: {

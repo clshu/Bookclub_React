@@ -15,13 +15,17 @@ module.exports = function(sequelize, DataTypes) {
     favbook3: DataTypes.STRING,
     aboutme: DataTypes.STRING,
     joindt: DataTypes.DATE,
-    picture: DataTypes.STRING,
+    piclink: DataTypes.STRING,
     username: DataTypes.STRING,
     password: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        Member.hasMany(models.Event);
+        Member.hasMany(models.Post);
+        Member.hasMany(models.Rsvp);
+        Member.hasMany(model.Ratings);
       }
     }
   });

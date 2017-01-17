@@ -17,9 +17,16 @@ router.get('/',function (req, res) {
 	.then(function(){
 		return models.Member.findAll({
 			include: [{
-        model: models.Event //,
-        //where: {$and:{eventid: models.Event.id,eventid:{$ne: null}} }
-      }]
+        				model: models.Event,
+        			    include: [{
+        						model: models.Book
+        						}]
+         
+     				 },
+      				{
+      	 			model: models.Post
+      				}
+      			  ]
 		})
 	})
 	.then(function(results){
