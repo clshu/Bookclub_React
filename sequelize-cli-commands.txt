@@ -29,12 +29,11 @@ sequelize model:create --name Member --attributes "fname:string,lname:string,add
 Events table
 
 id
-eventdt
-eventtime
-eventnotes
+dt
+notes
 memberId
 
-sequelize model:create --name Event --attributes "eventdt:Date,eventtime:string,eventnotes:string,memberId:integer"
+sequelize model:create --name Event --attributes "dt:Date,notes:string,memberId:integer"
 
 
 ----------------------------------------------------------
