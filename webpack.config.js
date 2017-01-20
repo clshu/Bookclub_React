@@ -1,20 +1,21 @@
 module.exports = {
-	entry: "./app/app.js",
+  entry: "./app/app.js",
 
-	output: {
-		filename: "pulic/bundle.js",
-	},
+  output: {
+    filename: "public/bundle.js"
+  },
 
-	module: {
-		loaders: [{
-			test: /\.jsx?$/,
-			include: /app/,
-			loader: "bable",
-			query: {
-				presets: ["react", "es2015"]
-			}
-		}]
-	},
-
-	devtool: "eval-source-map"
+  module: {
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        include: /app/,
+        loader: "babel",
+        query: {
+          presets: ["react", "es2015"]
+        }
+      }
+    ]
+  },
+  devtool: "eval-source-map"
 };
