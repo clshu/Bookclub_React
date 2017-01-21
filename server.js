@@ -5,7 +5,8 @@ var path = require('path');
 var methodOverride = require('method-override');
 var logger = require('morgan');
 var favicon = require('serve-favicon');
-//var events = require('./api/routes/events.js');
+var events = require('./api/routes/events.js');
+//var models  = require('./models');
 
 
 var PORT = process.env.PORT || 3000;
@@ -27,8 +28,18 @@ app.use(methodOverride('_method'));
 app.use(logger('combined'));
 
 
-//app.use('/events',events);
+// extract our sequelize connection from the models object, to avoid confusion
+//var sequelizeConnection = models.sequelize;
+// We run this query so that we can drop our tables even though they have foreign keys
+//sequelizeConnection.query('SET FOREIGN_KEY_CHECKS = 0')
+// a) sync our tables
+//.then(function(){
+//	return sequelizeConnection.sync({force:true})
+//})
+
 // Routes
+//app.use('/events',events);
+
 app.get(`*`, function(req, res) {
   res.sendFile('public/index.html', { root: __dirname });
 });
