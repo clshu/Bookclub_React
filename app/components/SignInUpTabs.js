@@ -13,7 +13,7 @@ export default class SignInUpTabs extends Component {
 	}
 	render() {
 		return (
-		<Tabs>
+		<Tabs initialSelectedIndex={parseInt(this.props.index)}>
     		<Tab 
     			label="Sign In" 
     			data-route="/"

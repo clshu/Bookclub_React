@@ -23,7 +23,7 @@ export default class Home extends Component {
 		return (
 	<Row>
       <Col md={8} offset={{ md: 2 }}>
-		  <SignInUpTabs />
+		  <SignInUpTabs index="1" />
   		  <SignUpForm onSubmit={this.handleSignUpSubmit}/>
   		</Col>
     </Row>

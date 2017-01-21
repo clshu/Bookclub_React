@@ -14,13 +14,14 @@ export default class SignIn extends Component {
 
   handleSignInSubmit(values) {
     // Do something with the form values
-    console.log(values);
+    //console.log(values);
+    browserHistory.push("news");
   }
 	render() {
 		return (
 	<Row>
       <Col md={8} offset={{ md: 2 }}>
-		    <SignInUpTabs />
+		    <SignInUpTabs index="0" />
   		  <SignInForm onSubmit={this.handleSignInSubmit}/>
   		</Col>
     </Row>
