@@ -13,6 +13,8 @@ class SignInForm extends Component {
   }
   
   render() {
+    //console.log("SignInForm");
+    //console.log(this.props);
     const { handleSubmit } = this.props;
     return (
    

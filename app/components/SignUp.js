@@ -13,12 +13,10 @@ export default class Home extends Component {
     this.handleSignUpSubmit = this.handleSignUpSubmit.bind(this);
 	}
 
-  handleSignUpSubmit(values) {
-    // Authtication: 
-    console.log(values);
-    browserHistory.push("/news");
-
-  }
+  	handleSignUpSubmit(values) {
+   	 // Authtication: 
+   	 //console.log(values);
+  	}
 	render() {
 		return (
 	<Row>
