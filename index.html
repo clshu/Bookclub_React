@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Book Club</title>
+    <link rel="stylesheet" href="assets/css/lp.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display|Playfair+Display+SC" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+
+
+    <!-- Added Moment JS -->
+    <script src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+
+</head>
+
+<body>
+
+
+    <div class="container-fluid">
+        <div class="header navbar navbar-fixed-top col-xs-12">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 marginTop brandName">
+                    <p id="bookclubText">ThE BooK CluB</p>
+                </div>
+                <!--    <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1"></div> -->
+
+                <div class="col-md-2">
+                </div>
+                <div class="loginInfoDiv">
+                    <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="emailInput1" aria-describedby="emailHelp" placeholder="Enter email">
+                                <!--       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                            </div>
+                    </div>
+                    </form>
+                    <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
+                        <div class="form-group">
+                            <label for="passwordInput1">Password</label>
+                            <input type="password" class="form-control" id="passwordInput1" placeholder="Password">
+                        </div>
+                    </div>
+
+                    </form>
+                    <div class="col-xs-4 col-sm-4 col-md-1 col-lg-1 button1">
+                        <button onclick="location.href = 'main.html'" type="button" class="btn" id="signInBtn">
+      <span class="glyphicon glyphicon-briefcase"></span> Log In
+      </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container mainInfo">
+            <div class="col-md-4">
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 signUp">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 id="text">Sign Up</h2>
+                        <div id="msgForUser">
+                            <h2 id="userMsgText">We're Excited To Have You Join Us!</h2>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 box" id="signInBox">
+
+                        <form>
+
+
+                            <div class="form-group">
+                                <label for="formGroupFirstName">First Name</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Damilola">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="formGroupLastName">Last Name</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Olatayo">
+                            </div>
+                            <div class="form-group login">
+                                <label for="emailInput">Email</label>
+                                <input type="email" class="form-control" id="emailInput" placeholder="lola@gmail.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="passwordInput">Password</label>
+                                <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="passwordInput2">Confirm Password</label>
+                                <input type="password" class="form-control" id="passwordInput" placeholder="Confirm Password">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="formGroupBooks">Favorite Book</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Alchemist">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="formGroupAddress">Address</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="1109 Pleasant Valley Rd">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="formGroupCity">City</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Austin">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="formGroupZip">Zipcode</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="7876">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" id="signUpBtn">Sign Up</button>
+
+
+
+
+
+                        </form>
+                        <div id="errMsg">
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+</body>
+
+</html>
