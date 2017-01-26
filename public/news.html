@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>Book Club</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Dancing+Script|Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+<body>
+
+<!--General wrapper DIV to roll all html content under 1 component-->
+<div id="mainHtml">
+
+<!--Navigation bar and logo -->
+  <nav class="teal" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="index.html" class="brand-logo">Neighborhood Book Club</a>
+      <ul class="right hide-on-med-and-down">
+        <li>
+            <!--img src="img/aJolie.png" alt="A Jolie" class="circle"-->
+            <span class="title">Welcome Angelina</span>
+            <i class="small material-icons">menu</i>
+        </li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <!--Main container -->
+  <main>
+    
+      <div class="row">
+      <!--Left-hand box with current month announcements-->
+
+        <div class="col s12 m3 l3">
+          <div id="announcements" class="data">
+            <section id="dateDisplay">
+              <h6 class="center">2017</h6>
+              <h5 class="center">JANUARY</h5>
+              <hr>
+            </section>
+            <section id="bookChoice">
+              <h6>BOOK TITLE:</h6>
+              <h4>Atlas Shrugged</h4>
+              <br>
+              <h6>AUTHOR:</h6>
+              <h4>Ayn Rand</h4>
+              <br>
+              <a href="#" class="waves-effect waves-light center btn">Rate It!</a>
+              <hr>
+            </section><br><br>
+            <section id="hostInfo">
+              <h4 align="left" class="title">Host Details</h4>
+              <div class="card horizontal">
+                  <div class="card-image">
+                      <img src="img/jCurtis.png">
+                  </div>
+                  <div class="card-stacked">
+                    <div class="card-content">
+                      <h6 class="title">JaimeLee Curtis</h6>
+                      <p>January 30, 2017<br> 700p-900p,<br> 111 Main St, Beverly Hills, CA  90210<br> m:(310)555-1234</p>
+                    </div>
+                  </div>
+              </div>
+              <br>
+              <a href="#" align="center" class="waves-effect waves-light btn">RSVP!</a>
+              <hr>
+            </section>
+            </div>
+          </div>
+       
+
+        <!--Main content organized as SPA-->
+        <div class="col s12 m6 l7">
+          <div id="mainContent" class="data">
+            <!--Tab navigation to switch routes-->
+            <ul class="tabrow">
+                <li>NEWS</li>
+                <li>MEMBERS</li>
+                <li class="selected">EVENTS</li>
+                <li>LIBRARY</li>
+            </ul>
+
+            <!--Input Form to post user comments-->
+            <div class="input-field">
+                <input id="newsPost" type="text" class="validate">
+                <label for="newsPost">What's on your mind?</label>
+            </div>
+
+            <!--Avatar Content -->
+            <ul class="collection">
+                <li class = "collection-item avatar">
+                  <img src="img/aJolie.png" alt="" class="circle">
+                  <span class="title">Angelina Jolie</span>
+                  <p>January 25, 2017:  7:00pm</p>
+                  <p>Rated Atlas Shrugged five stars!</p>
+                </li>
+
+                <li class = "collection-item avatar">
+                  <img src="img/bPitt.png" alt="" class="circle">
+                  <span class="title">Brad Pitt</span>
+                  <p>January 21, 2017:  3:31pm</p>
+                  <p>My new ambition is to become a steele tycoon!</p>
+                </li>
+
+                <li class = "collection-item avatar">
+                  <img src="img/aJolie.png" alt="" class="circle">
+                  <span class="title">Angelina Jolie</span>
+                  <p>January 17, 2017:  4:35pm</p>
+                  <p>I can't believe the main character sleeps with a married man!</p>
+                </li>
+
+          </div>
+        </div>
+
+
+
+
+
+
+<!--Close General wrapper div 'mainHtml'-->
+</div>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+</html>
