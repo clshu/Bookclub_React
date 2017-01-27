@@ -13,12 +13,15 @@ nav .brand-logo {
 
 .brand-logo{
   font-family: 'Dancing Script', cursive;
+  margin-left:100px;
 }
 
+
 nav {
-  height: 100px;
-  margin-bottom: 40px;
+  padding-right:50px;
+  background-color: #26a69a;
 }
+
 
 p {
   line-height: 2rem;
@@ -56,141 +59,67 @@ p {
   display: inline-block;
 }
 
-#announcements {
-  margin-left:50px;
+#side-panel {
+  border-style: solid;
+  border-width:1px;
+  border-color:#26a69a;
+  padding-bottom:20px;
 }
 
 #dateDisplay {
   color: #26a69a;
+  margin-top:50px;
 }
 
-#mainContent {
-  margin-left: 50px;
+#bookChoice {
+  border-top: solid 1px #26a69a;
+  border-bottom: solid 1px #26a69a;
+  padding: 0 0 8px 0;
+}
 
+#hostInfo h5{
+  color: #26a69a;
+  text-align:left;
 }
 
 .btn {
-  margin-left: 75px;
+  margin-left: 70px;
 }
 
-.tabrow {
-  text-align: left;
-  list-style: none;
-  margin: 0;
-  padding:0;
-  line-height: 50px;
+.main-panel {
+  margin-top: 50px;
+
 }
 
-.tabrow li {
-  width: 165px;
-  margin: 0 10px;
+.panel-nav {
+  width:100%;
+  background:#BCBCBC;
+
+}
+
+.choice-panel {
+  margin-right: 10px;
+}
+
+
+.detail-panel {
+  border-style: solid;
+  border-width:3px;
+  border-color:#26a69a;
+  padding-bottom:20px;
+  min-height:400px;
+  margin-top:7px;
+}
+
+.detail-panel .container {
   padding: 0;
-  border: 1px solid #AAA;
-  background: #ECECEC;
-  text-align:center;
-  display: inline-block;
 }
 
-.tabrow li.selected {
-  background: #FFF;
-  color: #000;
+.detail-panel h3{
+  font-size: 18px;
+  font-weight: 400;
 }
 
-.tabrow {
-  position: relative;
-}
-
-.tabrow:after{
-  position: absolute;
-  content:" ";
-  width: 100%;
-  bottom:0;
-  left:0;
-  border-bottom: 3px solid #AAA;
-  z-index: 1;
-}
-
-.tabrow before {
-  z-index:1;
-}
-
-.tabrow li {
-  position: relative;
-  z-index: 0;
-}
-
-.tabrow li.selected {
-  z-index: 2;
-  border-bottom-color:#FFF;
-}
-
-.tabrow li:before, 
-.tabrow li:after {
-  position: absolute;
-  bottom: -1px;
-  width:6px;
-  height:6px;
-  content: " ";
-}
-
-.tabrow li:before {
-  left: -6px;
-}
-
-.tabrow li:after {
-  right: -6px;
-}
-
-.tabrow li:after, .tabrow li:before {
-  border: 1px solid #AAA;
-}
-
-.tabrow li{
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-}
-
-.tabrow li:before {
-  border-bottom-right-radius: 6px;
-  border-width: 0 1px 1px 0;
-}
-
-.tabrow li:after {
-  border-bottom-left-radius: 6px;
-  border-width: 0 0 1px 1px;
-}
-
-.tabrow li:before {
-  box-shadow: 2px 2px 0 red;
-}
-
-.tabrow li:after {
-  box-shadow: -2px 2px 0 red;
-}
-
-.tabrow li:before {
-  box-shadow: 2px 2px 0 #ECECEC;
-}
-
-.tabrow li:after {
-  box-shadow: -2px 2px 0 #ECECEC;
-}
-
-.tabrow li.selected:before {
-  box-shadow: 2px 2px 0 #FFF;
-}
-
-.tabrow li.selected:after {
-  box-shadow: -2px 2px 0 #FFF;
-}
-
-.tabrow li {
-  background: linear-gradient(to bottom, #ECECEC 50%, #D1D1D1 100%);
-  box-shadow: 0 3px 3px rgba(0,0,0,.4), inset 0 1px 0 #FFF;
-  text-shadow: 0 1px #FFF;
-  margin: 0 -5px;
-  padding: 0 20px;
-}
 
 .input-field {
   border: 1px solid;
@@ -201,6 +130,12 @@ p {
 
 .collection li {
   padding: 10px;
+}
+
+table {
+  line-height: 1.0rem;
+  padding:0;
+  margin:0;
 }
 
 @media only screen and (max-width : 992px) {
