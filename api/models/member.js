@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
         Member.hasMany(models.Event);
         Member.hasMany(models.Post);
         Member.hasMany(models.Rsvp);
-        Member.hasMany(model.Ratings);
+        Member.hasMany(models.Rating);
       }
     }
   });
