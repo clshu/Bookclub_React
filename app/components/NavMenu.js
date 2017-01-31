@@ -11,10 +11,10 @@ return (
 	 		<nav className="panel-nav">
               <div className="nav-wrapper">
                   <ul id="nav-mobile" className="left hide-on-med-and-down">
-                      <li className="active"><Link to="/news">NEWS</Link></li>
-                      <li><Link to="/members">MEMBERS</Link></li>
-                      <li><Link to="/events">EVENTS</Link></li>
-                      <li><Link to="/library">LIBRARY</Link></li>
+                      <li className="active"><Link to="/app/news">NEWS</Link></li>
+                      <li><Link to="/app/members">MEMBERS</Link></li>
+                      <li><Link to="/app/events">EVENTS</Link></li>
+                      <li><Link to="/app/library">LIBRARY</Link></li>
                   </ul>
               </div>
       </nav>

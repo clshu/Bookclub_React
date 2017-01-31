@@ -43,7 +43,7 @@ const routes = (
     				<Route path="news" component={News} />
     				<Route path="members" component={Members} />
     				<Route path="events" component={ Events} />
-					<IndexRoute component={Events} />
+					<DefaultRoute component={Events} />
     			</Route>
     			<IndexRoute component={App} />
     		</Route>
