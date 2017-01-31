@@ -17,7 +17,9 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-app.use(express.static('public'));// override with POST having ?_method
+// Middleware
+app.use(express.static(path.join(__dirname, 'public')));
+// override with POST having ?_method
 app.use(methodOverride('_method'));
 
 
