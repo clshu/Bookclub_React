@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>Book Club</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Dancing+Script|Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+<body>
+<div id="main">
+
+    <!--Navigation header-->
+    <!--Dropdown structure-->
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#">My profile</a></li>
+        <li><a href="#">Log-off/a></li>
+        <li><a href="#">three</a></li>
+    </ul>
+    <nav>
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">Neighborhood Book Club</a>
+              <ul class="right hide-on-med-and-down">
+                  <li>Welcome, Angelina</li>
+                  <li><a class="dropdown-button" href="#" data-activates="dropdown1">
+                  <i class="material-icons right">menu</i></a>
+                  </li>
+              </ul>
+        </div>
+    </nav>
+
+    <div class="row">
+
+    <!--Side-panel announcing current month events -->
+     <div class="col s12 m3 l3">
+
+     <div id="side-panel">
+        <div class="container">
+            <section id="dateDisplay">
+              <h6 class="center">2017</h6>
+              <h5 class="center">JANUARY</h5>
+            </section>
+            <section id="bookChoice">
+              <h6>BOOK TITLE:</h6>
+              <h4>Atlas Shrugged</h4>
+              <br>
+              <h6>AUTHOR:</h6>
+              <h4>Ayn Rand</h4>
+              <br>
+              <a href="#" class="waves-effect waves-light center btn">Rate It!</a>
+            </section><br>
+
+            <section id="hostInfo">
+              <h5 class="title">EVENT HOST</h5>
+              <div class="card horizontal">
+                  <div class="card-image">
+                      <img src="img/jCurtis.png">
+                  </div>
+
+                  <div class="row">
+                    <div class="card-content">
+                      <h6 class="title">JaimeLee Curtis</h6><br>
+                      <p>January 30, 2017<br> 700p-900p,<br> 111 Main St, Beverly Hills, CA  90210<br> m:(310)555-1234</p>
+                    </div>
+                  </div>
+              </div>
+              <br>
+              <a href="#" align="center" class="waves-effect waves-light btn">RSVP!</a>
+            </section>
+      </div>
+
+     </div> <!--closes id side-panel-->
+     </div> <!--closes side-panel column-->
+
+     <!--Main-panel with SPA Navigation -->
+     <div class="col s12 m9 l9">
+
+     <div class="main-panel">
+        <div class="container">
+            <!--Main panel nav bar-->
+            <nav class="panel-nav">
+              <div class="nav-wrapper">
+                  <ul id="nav-mobile" class="left hide-on-med-and-down">
+                      <li><a href="news.html">NEWS</a></li>
+                      <li><a href="members.html">MEMBERS</a></li>
+                      <li class="active"><a href="events.html">EVENTS</a></li>
+                      <li><a href="library.html">LIBRARY</a></li>
+                  </ul>
+              </div>
+            </nav>
+
+            <div class="row">
+
+            <!--Member panel listing names and avatar -->
+            <div class="col sm12 m5 lg5">
+            <div class="choice-panel">
+                  <ul class="collection">
+                      <li class="collection-item avatar">
+                          <a href="#"><i class="material-icons circle teal">today</i>
+                          <span class="title">Create New Event</span></a>
+                      </li>
+
+
+                      <li class="collection-item avatar">
+                          <i class="material-icons circle teal">today</i>
+                          <span class="title">March 27, 2017</span>
+                      </li>
+                 
+                       <li class="collection-item avatar">
+                          <i class="material-icons circle teal">today</i>
+                          <span class="title">February 27, 2017</span>
+                      </li>
+
+                      <li class="collection-item avatar active">
+                          <i class="material-icons circle teal">today</i>
+                          <span class="title">January 30, 2017</span>
+                      </li>
+
+                       <li class="collection-item avatar">
+                          <i class="material-icons circle teal">today</i>
+                          <span class="title">December 26, 2017</span>
+                      </li>
+
+                       <li class="collection-item avatar">
+                          <i class="material-icons circle teal">today</i>
+                          <span class="title">November 28, 2017</span>
+                      </li>
+
+                  </ul>
+            </div>
+            </div>
+
+            <div class="col sm12 m7 lg7">
+            <div class="detail-panel">
+                  <div class="row">
+                      <div class="col sm3 m3 l3">
+                          <img src="img/jCurtis.png" alt="" class="avatar"></img>
+                      </div>
+                      <div class="col sm9 m9 l9">
+                          <h4 class="center">January 30, 2017</h4>
+                      </div>
+                  </div>
+                  
+                  <div class="row">
+                        <div class="container">
+                          <p>JaimeLee Curtis</p>
+                          <p>111 Main St, Beverely Hills, CA  90210</p>
+                          <p>m. (310) 555-1234</p>
+                    
+                          <h3>BOOK CHOICE:</h3>
+                          <table>
+                            <tr><td>Title: </td><td>Atlas Shrugged</td></tr>
+                            <tr><td>Author: </td><td>Ayn Rand</td></tr>
+                          </table>
+
+                          <ul class="collection">
+                              <li class="collection-item avatar">
+                                  <i class="material-icons circle teal">done</i>
+                                  <span class="title">Are you going?</span>
+                                  <div class="rsvp-response">
+                                    <input name="rsvp" type="radio" id="rsvp-yes" />
+                                    <label for="rsvp-yes">YES</label>
+                                    <input name="rsvp" type="radio" id="rsvp-no" />
+                                    <label for="rsvp-no">NO</label>
+                                    <input name="rsvp" type="radio" id="rsvp-maybe" />
+                                    <label for="rsvp-maybe">MAYBE</label>
+                                  </div>
+                              </li>
+
+                              <li class="collection-item avatar">
+                                  <img src="img/aJolie.png" alt="" class="circle">
+                                  <span class="title">Angelina Jolie</span>
+                                  <p>Replied: Yes</p>
+                              </li>
+                         
+                              <li class="collection-item avatar">
+                                  <img src="img/bPitt.png" alt="" class="circle">
+                                  <span class="title">Brad Pitt</span>
+                                  <p>Replied: No</p>
+                              </li>
+
+                              <li class="collection-item avatar">
+                                  <img src="img/cGooding.png" alt="" class="circle">
+                                  <span class="title">Cuba Gooding Jr.</span>
+                                  <p>Replied: Maybe</p>
+                              </li>
+
+                              <li class="collection-item avatar">
+                                  <img src="img/jCurtis.png" alt="" class="circle">
+                                  <span class="title">Jaime Lee Curtis</span>
+                                  <p>Replied: Yes</p>
+                              </li>
+
+                              <li class="collection-item avatar">
+                                  <img src="img/kReeves.png" alt="" class="circle">
+                                  <span class="title">Keanu Reeves</span>
+                                  <p>Awaiting reply</p>
+                              </li>
+
+           
+                          
+                        </div>  <!--closes class=container for data details -->
+                  </div>        <!--closes row -->
+
+              </div> <!--closes class=detail-panel -->
+            </div>   <!--closes class=col sm12 m7 lg7 -->
+
+
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+</body>
+</html>

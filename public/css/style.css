@@ -1,0 +1,171 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+nav ul a,
+nav .brand-logo {
+  color: #fff;
+}
+
+.brand-logo{
+  font-family: 'Dancing Script', cursive;
+  margin-left:100px;
+}
+
+
+nav {
+  padding-right:50px;
+  background-color: #26a69a;
+}
+
+
+p {
+  line-height: 2rem;
+}
+
+.button-collapse {
+  color: #26a69a;
+}
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 25px;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+  .parallax-container .section {
+    width: 100%;
+  }
+
+#memberPanel1 {
+  background-color: #F4F7D2;
+  color: teal;
+}
+
+#memberPanel2 {
+  background-color: #1a627a;
+  color: white;
+}
+
+#featuredBookTitle {
+  font-size: 48px;
+  padding-top: 40px;
+}
+#previousBookView{
+  display: inline-block;
+}
+
+#side-panel {
+  border-style: solid;
+  border-width:1px;
+  border-color:#26a69a;
+  padding-bottom:20px;
+}
+
+#dateDisplay {
+  color: #26a69a;
+  margin-top:50px;
+}
+
+#bookChoice {
+  border-top: solid 1px #26a69a;
+  border-bottom: solid 1px #26a69a;
+  padding: 0 0 8px 0;
+}
+
+#hostInfo h5{
+  color: #26a69a;
+  text-align:left;
+}
+
+.btn {
+  margin-left: 70px;
+}
+
+.main-panel {
+  margin-top: 50px;
+
+}
+
+.panel-nav {
+  width:100%;
+  background:#BCBCBC;
+
+}
+
+.choice-panel {
+  margin-right: 10px;
+}
+
+
+.detail-panel {
+  border-style: solid;
+  border-width:3px;
+  border-color:#26a69a;
+  padding-bottom:20px;
+  min-height:400px;
+  margin-top:7px;
+}
+
+.detail-panel .container {
+  padding: 0;
+}
+
+.detail-panel h3{
+  font-size: 18px;
+  font-weight: 400;
+}
+
+
+.input-field {
+  border: 1px solid;
+  width: 100%;
+  padding: 20px;
+  font-size: 18px;
+}
+
+.collection li {
+  padding: 10px;
+}
+
+table {
+  line-height: 1.0rem;
+  padding:0;
+  margin:0;
+}
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+ul, li {
+  line-height: : 3px;
+
+}
