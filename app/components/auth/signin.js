@@ -3,9 +3,9 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 
-class Signup extends Component {
+class Signin extends Component {
   handleFormSubmit = ({email, password}) => {
-    this.props.signupUser({email, password});
+    this.props.signinUser({email, password});
   };
   renderAlert() {
     if (this.props.errorMessage) {
@@ -24,8 +24,7 @@ class Signup extends Component {
 
 	render() {
 
-  	const { handleSubmit, pristine, reset, submitting } = this.props;
-
+  	const { handleSubmit, pristine, reset, submitting } = this.props
 		return (
     <form onSubmit={handleSubmit(this.handleFormSubmit)}>
 
@@ -40,13 +39,6 @@ class Signup extends Component {
         <div>
           <Field name="password" component="input" type="password" placeholder="Password"/>
         </div>
-        {/*password.touched && password.error && <div className="error">{password.error}</div> */}
-      </div>
-      <div>
-        <label>Confirm Password</label>
-        <div>
-          <Field name="passwordConfirm" component="input" type="password" placeholder="Confirm Password"/>
-        </div>
       </div>
       {this.renderAlert()}
       <div>
@@ -59,17 +51,9 @@ class Signup extends Component {
 	}
 }
 
-function validate({email, password, passwordConfirm}) {
-	let error = {};
-	if (password != passwordConfirm) {
-		error.password = 'Passwords and confirmed password did not match'
-	}
-	return error;
-}
 function mapStateToProps(state) {
   return { errorMessage: state.auth.error };
 }
 export default connect(mapStateToProps, actions)(reduxForm({
-  form: 'signup', // a unique identifier for this form
-  validate: validate
-})(Signup))
+  form: 'signin' // a unique identifier for this form
+})(Signin))
