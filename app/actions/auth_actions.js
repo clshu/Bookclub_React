@@ -1,10 +1,10 @@
 // create all actions associated with activeSubreddit
-export function  setProfile(username){
+export function  setProfile(profile){
 
 	return{
 		type: 'SET_PROFILE',
 		isLoggedIn:true,
-		username
+		profile
 	}
 }
 
@@ -41,7 +41,7 @@ export function despatchAuthLogin(user){
 
 	return (despatch) => {
 
-		fetch('/login', 
+		fetch('/auth/signin', 
 		{   
 		  method: "POST",
 		  body: JSON.stringify(user),
@@ -58,10 +58,11 @@ export function despatchAuthLogin(user){
 
 			if(!data.error){
 
-				despatch(setProfile(data.local.username));
+				localStorage.setItem('bcjwt', data.token);
+				despatch(setProfile(data.member));
 			}else{
-				console.log(data.error[0])
-				despatch(setLoginMsg(data.error[0]));
+				console.log(data.error)
+				despatch(setLoginMsg(data.error));
 			}
 			//despatch(addPost(data));
 		});
@@ -75,7 +76,7 @@ export function despatchAuthSignup(user){
 
 	return (despatch) => {
 
-		fetch('/signup', 
+		fetch('/auth/signup', 
 		{   
 		  method: "POST",
 		  body: JSON.stringify(user),
@@ -91,11 +92,12 @@ export function despatchAuthSignup(user){
 			//console.log(data.local.username);
 			
 			if(!data.error){
+				localStorage.setItem('bcjwt', data.token);
 
-				despatch(setProfile(data.local.username));
+				despatch(setProfile(data.member));
 			}else{
-				console.log(data.error[0])
-				despatch(setSignupMsg(data.error[0]));
+				console.log(data.error)
+				despatch(setSignupMsg(data.error));
 			}
 		});
 	}

@@ -13,6 +13,7 @@ import Events from '../components/Events';
 import Members from '../components/Members';
 import News from '../components/News';
 import Login from '../components/Login';
+import Signup from '../components/Signup';
 import EnsureLoggedInContainer from '../components/EnsureLoggedInContainer';
 
 
@@ -25,8 +26,8 @@ const defaultState = {
 
 };
 
-const store = createStore(rootReducer, defaultState);
-//composeWithDevTools(applyMiddleware(thunk)));
+const store = createStore(rootReducer, //defaultState);
+composeWithDevTools(applyMiddleware(thunk)));
 
 
 const routes = (
@@ -37,6 +38,7 @@ const routes = (
 	    		
 	    <Route path="/" component={Main}>
 	    	<Route path="login" component={Login} />
+            <Route path="signup" component={Signup} />
     		
             <Route component={EnsureLoggedInContainer}>
             	<Route path="app" component={App}>

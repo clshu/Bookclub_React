@@ -5,7 +5,6 @@ const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const LocalStrategy = require('passport-local');
 /*
-
 Incoming Request --> Passport --> Route Handler
 						|
 						|
@@ -20,20 +19,16 @@ Incoming Request --> Passport --> Route Handler
 */
 
 /*
-
 Sign up --> Verify email is not in use --> Token
-
 Log in --> Verify email/password(Local Strategy) --> Token
-
 Auth's request --> Verify Token(JWT Strategy) --> Resource Access
-
 */
 
 // Set Options for Local
 // By default local strategy will look for username and password
 // Replace username with email
 const localOptions = { usernameField: 'email' };
-const localLogin = new LocalStrategy(localOptions, function(email, password, done) {
+const localLogin = new LocalStrategy(localOptions, function(email, password, done,req) {
 	// Verify this email and password, call done with the member
 	// if it is correct email and password
 	// otherwise, call done with false
@@ -41,7 +36,8 @@ const localLogin = new LocalStrategy(localOptions, function(email, password, don
 	models.Member.findOne({where: {email: email}})
 	.then(function(member) {
 		// No matching member
-		if (!member) { return done(null, false); }
+
+		if (!member) { return done(null, {error: 'No user found.'}); }
 
 		// compare passwords
 		// comparePassword is an instance method defined in Member Model
@@ -50,7 +46,7 @@ const localLogin = new LocalStrategy(localOptions, function(email, password, don
 
 		member.comparePassword(password, function(err, isMatched) {
 			if (err) { return done(err); }
-			if (!isMatched) { return done(null, false); }
+			if (!isMatched) { return done(null, {error:'Incorrect Password.'}); }
 			let user = member;
 			return done(null, user);
 		});

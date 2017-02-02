@@ -1,7 +1,7 @@
 export default function auth(state = {
-	isLoggedIn : true,
+	isLoggedIn : false,
 	redirectUrl:"",
-	username: "bhagya",
+	profile: {},
 	loginMessage:"",
 	signupMessage:""
 	//redirectUrl: '/login'
@@ -12,7 +12,7 @@ export default function auth(state = {
 
 		case 'SET_PROFILE' :
 
-			return { ...state , isLoggedIn: true, username: action.username}
+			return { ...state , isLoggedIn: true, profile: action.profile}
 
 		case 'SET_LOGIN_MSG':
 

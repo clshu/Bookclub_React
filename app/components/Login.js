@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-import { despatchAuthLogin, despatchAuthSignup } from '../actions/auth_actions';
+import { despatchAuthLogin} from '../actions/auth_actions';
+import { Link } from 'react-router';
 
 // create the component
 class Login extends Component {
@@ -16,18 +17,15 @@ class Login extends Component {
 
 	    loginEmail: "bhagya@bhagya.com",
 	    loginPassword : "bhagya",
-	    loginMessage:this.props.loginMessage,
+	    loginMessage:this.props.loginMessage
 
 
-	   signupEmail: "",
-	   signupPassword : "",
-	   signupUsername:"",
-	   signupMessage: this.props.signupMessage
+	 
 
     };
 
     this.handleLogin = this.handleLogin.bind(this);
-    this.handleSignup = this.handleSignup.bind(this);
+
 
 	}
 
@@ -37,8 +35,7 @@ class Login extends Component {
   		browserHistory.push('/app');
   	}
     this.setState({
-    				loginMessage: nextProps.loginMessage,
-    			    signupMessage: nextProps.signupMessage
+    				loginMessage: nextProps.loginMessage
     			});
   }
 
@@ -69,26 +66,7 @@ class Login extends Component {
   }
 
 
-    handleSignup(e){
-
-    if(this.state.signupEmail && this.state.signupPassword && this.state.signupUsername){
-
-     this.props.despatchAuthSignup({
-
-      email: this.state.signupEmail,
-      password: this.state.signupPassword,
-      username: this.state.signupUsername
-      
-    });
-
-     
-
-    }else{
-
-    	 this.setState({ signupMessage: "Enter all fields" });
-    }
-    
-  }
+  
 
 	// return html to be rendered
 	render() {
@@ -99,7 +77,8 @@ class Login extends Component {
 			<div className="row valign-wrapper">
 				
 
-				<div className=" card col s5">
+				<div className=" card col s5 offset-s3">
+
 
 					<div className="row center"> Already a member? Login</div>
 
@@ -121,36 +100,13 @@ class Login extends Component {
 						  {this.state.loginMessage}
 					</div>
 
-				</div>
+					<br/>
 
+					<div className="row center"><Link to="/signup">New member? Signup</Link></div>
 
-				<div className="col s5 card offset-s1">
-
-						<div className="row center"> New member? Signup</div>
-
-						<div className="row">
-								<input type="text"  name="signupEmail"  value={this.state.signupEmail}  onChange={this.handleChange.bind(this)} className="cursiveFont col s8 offset-s2" placeholder="email"/>
-						</div>
-						<div className="row">
-							 <input type="password"   name="signupPassword"  value={this.state.signupPassword}  onChange={this.handleChange.bind(this)} className="cursiveFont col s8 offset-s2" placeholder="password"/>
-						</div>
-
-						<div className="row">
-							 <input type="text"  name="signupUsername"  value={this.state.signupUsername}  onChange={this.handleChange.bind(this)} className="cursiveFont col s8 offset-s2" placeholder="username"/>
-						</div>
-
-
-					<div className="row">
-						  <a onClick={this.handleSignup} className="waves-effect waves-light btn flat col s4 offset-s4">Signup</a>
-					</div>
-
-						<div className="row center">
-							 {this.state.signupMessage}
-						</div>
-					
 
 				</div>
-
+			
 
 			</div>
 
@@ -161,15 +117,13 @@ class Login extends Component {
 
 Login.propTypes = {
 
-   loginPassword : React.PropTypes.string,
-   signupMessage : React.PropTypes.string
+   loginPassword : React.PropTypes.string
 
 }
 
 function mapStateToProps(state){
   return {
   	loginMessage: state.auth.loginMessage,
-    signupMessage: state.auth.signupMessage,
     isLoggedIn: state.auth.isLoggedIn,
     redirectUrl: state.auth.redirectUrl
 
@@ -177,4 +131,4 @@ function mapStateToProps(state){
 }
 
 
-export default connect(mapStateToProps,{ despatchAuthLogin, despatchAuthSignup })(Login);
+export default connect(mapStateToProps,{ despatchAuthLogin })(Login);

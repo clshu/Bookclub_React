@@ -17,9 +17,15 @@ router.post('/signin', verifyLogin, function(req, res, next) {
 	// done(null, user), req.user is fixed and can't use req.member
 	// Just send back token and member
 
-	let member = req.user;
-	member.password = undefined; // Don't send password back to frontend
-	return res.json({ token: tokenForMember(member), member });
+	if (req.user.error){
+		res.json({ error: req.user.error })
+	}else{
+		let member = req.user;
+		member.password = undefined; // Don't send password back to frontend
+		return res.json({ token: tokenForMember(member), member });
+	}
+
+	
 })
 
 router.post('/signup', function(req, res, next) {
@@ -27,7 +33,7 @@ router.post('/signup', function(req, res, next) {
 	const password = req.body.password;
 
 	if (!email || !password) {
-		res.status(422).send("You must provide email and password");
+		res.status(422).json({error: "You must provide email and password"});
 	}
 
 	// See if member with the given email exists
@@ -35,7 +41,7 @@ router.post('/signup', function(req, res, next) {
 		.then(function(existingMember) {
 			if (existingMember) {
 				// If a member with email does exist, return an error
-				return res.status(422).send("Email in use");
+				return res.status(422).json({error: "Email in use."});
 			}
 
 			// If not, create and save member to DB

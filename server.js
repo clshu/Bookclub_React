@@ -11,16 +11,18 @@ const passport = require('passport');
 // By default passport use cookie and session is true, set it false here
 const verifyToken = passport.authenticate('jwt', { session: false});
 const verifyLogin = passport.authenticate('local', { session: false});
+var flash    = require('connect-flash');
 
 const auth = require('./api/routes/auth');
 const feature = require('./api/routes/feature');
+const events = require('./api/routes/events');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
 
 // DB Setup
 // {force:true} drops the table everytime the server starts.
-models.sequelize.sync({force:true})
+models.sequelize.sync()
 
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({
@@ -37,9 +39,10 @@ app.use(methodOverride('_method'));
 
 // middleware to log request to console
 app.use(logger('combined'));
-
+app.use(flash());
 // Routes
 app.use('/auth', auth);
+app.use('/api/events',verifyToken,events);
 
 // feature is for test purpose only
 app.use('/feature', verifyToken, feature);
