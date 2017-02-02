@@ -25,59 +25,33 @@ nav {
 
 p {
   line-height: 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
 }
 
 .button-collapse {
   color: #26a69a;
 }
 
-.parallax-container {
-  min-height: 380px;
-  line-height: 25px;
-  height: auto;
-  color: rgba(255,255,255,.9);
-}
-  .parallax-container .section {
-    width: 100%;
-  }
-
-#memberPanel1 {
-  background-color: #F4F7D2;
-  color: teal;
-}
-
-#memberPanel2 {
-  background-color: #1a627a;
-  color: white;
-}
-
-#featuredBookTitle {
-  font-size: 48px;
-  padding-top: 40px;
-}
-#previousBookView{
-  display: inline-block;
-}
-
-#side-panel {
+.side-panel {
   border-style: solid;
   border-width:1px;
   border-color:#26a69a;
   padding-bottom:20px;
 }
 
-#dateDisplay {
+#date-display {
   color: #26a69a;
   margin-top:50px;
 }
 
-#bookChoice {
+#book-choice {
   border-top: solid 1px #26a69a;
   border-bottom: solid 1px #26a69a;
   padding: 0 0 8px 0;
 }
 
-#hostInfo h5{
+#host-info h5{
   color: #26a69a;
   text-align:left;
 }
@@ -87,20 +61,29 @@ p {
 }
 
 .main-panel {
-  margin-top: 50px;
-
+  margin: 50px 50px 10px 50px;
+  padding:0 0 0 0;
 }
 
 .panel-nav {
   width:100%;
   background:#BCBCBC;
-
 }
 
-.choice-panel {
-  margin-right: 10px;
+#newsPost{
+  border-bottom:none;
 }
 
+#book-rating{
+  margin: 20px 20px 20px 20px;
+}
+
+.input-field {
+  border: 1px solid;
+  width: 100%;
+  padding: 40px;
+  font-size: 18px;
+}
 
 .detail-panel {
   border-style: solid;
@@ -108,7 +91,11 @@ p {
   border-color:#26a69a;
   padding-bottom:20px;
   min-height:400px;
-  margin-top:7px;
+  margin:7px 1px 0px 25px;
+}
+
+.row .col {
+  padding:0;
 }
 
 .detail-panel .container {
@@ -118,14 +105,6 @@ p {
 .detail-panel h3{
   font-size: 18px;
   font-weight: 400;
-}
-
-
-.input-field {
-  border: 1px solid;
-  width: 100%;
-  padding: 20px;
-  font-size: 18px;
 }
 
 .collection li {
@@ -166,6 +145,6 @@ footer.page-footer {
 }
 
 ul, li {
-  line-height: : 3px;
+  line-height: : 1px;
 
 }
