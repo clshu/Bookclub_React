@@ -30,7 +30,7 @@ module.exports = function(sequelize, DataTypes) {
     favbook1: DataTypes.STRING,
     favbook2: DataTypes.STRING,
     favbook3: DataTypes.STRING,
-    aboutme: DataTypes.STRING,
+    aboutme: DataTypes.STRING(1000),
     joindt: DataTypes.DATE,
     piclink: DataTypes.STRING,
     password: DataTypes.STRING
@@ -47,8 +47,10 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     hooks: {
-      beforeCreate: hashPassword
-    },
+      beforeCreate: hashPassword,
+      beforeBulkCreate: hashPassword
+
+      },
     instanceMethods: {
       comparePassword: function(plainPassword, callback) {
         bcrypt.compare(plainPassword, this.password, function(err, isMatched) {
