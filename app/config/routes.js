@@ -11,6 +11,7 @@ import App from '../components/App';
 import Main from '../components/Main';
 import Events from '../components/Events';
 import Members from '../components/Members';
+import MemberDetail from '../components/MemberDetail';
 import News from '../components/News';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
@@ -43,9 +44,12 @@ const routes = (
             <Route component={EnsureLoggedInContainer}>
             	<Route path="app" component={App}>
     				<Route path="news" component={News} />
-    				<Route path="members" component={Members} />
+    				<Route path="members" component={Members}>
+                       
+                        <IndexRoute component={MemberDetail} />
+                    </Route>
     				<Route path="events" component={ Events} />
-					<IndexRoute component={Events} />
+					<IndexRoute component={ News } />
     			</Route>
     			<IndexRoute component={App} />
     		</Route>

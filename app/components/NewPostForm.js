@@ -49,7 +49,7 @@ render(){
 		   <div className="input-field">
                 <input id="newsPost" type="text" name= "text" value={ this.state.text } onChange={ this.handleChange} className="validate" placeholder="What's on your mind?"></input>
                
-                <hr/>
+                
                 <button className="btn-sm right" name="action" onClick ={ this.handleSubmit }>Submit</button><br/>
             </div>
 
