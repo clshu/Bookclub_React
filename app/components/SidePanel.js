@@ -1,26 +1,42 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getCurrentEvent } from '../actions/event_actions';
 
 class SidePanel extends Component{
 
-	
-render(){
+	componentDidMount() {
+		if (!this.props.currentEvent) {
+			this.props.getCurrentEvent();
+		}
+	}
 
+	render() {
+		if (!this.props.currentEvent) return (<div></div>);
+		let monthNames = [
+		  "January", "February", "March",
+		  "April", "May", "June", "July",
+		  "August", "September", "October",
+		  "November", "December"
+		];
+		let eventTime = new Date(this.props.currentEvent.dt);
+		let book = this.props.currentEvent.Book;
+		let host = this.props.currentEvent.Member;
+		let address = `${host.address1}, ${host.city}, ${host.state} ${host.zip}`;
 
-return (
-
-   
+		return (
         <div id="side-panel">
         <div className="container">
             <section id="dateDisplay">
-              <h6 className="center">2017</h6>
-              <h5 className="center">JANUARY</h5>
+              <h6 className="center">{eventTime.getFullYear()}</h6>
+              <h5 className="center">{monthNames[eventTime.getMonth
+								()]}</h5>
             </section>
             <section id="bookChoice">
               <h6>BOOK TITLE:</h6>
-              <h4>Atlas Shrugged</h4>
+              <h4>{book.title}</h4>
               <br/>
               <h6>AUTHOR:</h6>
-              <h4>Ayn Rand</h4>
+              <h4>{book.author}</h4>
               <br/>
               <a href="#" className="waves-effect waves-light center btn">Rate It!</a>
             </section><br/>
@@ -33,8 +49,8 @@ return (
                   </div>
                   <div className="row">
                     <div className="card-content">
-                      <h6 className="title">JaimeLee Curtis</h6><br/>
-                      <p>January 30, 2017<br/> 700p-900p,<br/> 111 Main St, Beverly Hills, CA  90210<br/> m:(310)555-1234</p>
+                      <h6 className="title">{host.fname} {host.lname}</h6><br/>
+                      <p>{this.props.currentEvent.dt}<br/> <br/>{address}<br/> m:{host.mobile}</p>
                     </div>
                   </div>
               </div>
@@ -44,7 +60,7 @@ return (
       </div>
        {/*<!--closes id side-panel-->*/}
      </div>
-  
+
 	);
 
 
@@ -52,4 +68,15 @@ return (
 
 }
 
-export default SidePanel
+SidePanel.propTypes = {
+  currentEvent : React.PropTypes.object
+}
+
+function mapStateToProps(state){
+    return {
+      currentEvent : state.currentEvent
+    }
+}
+
+
+export default connect(mapStateToProps,{ getCurrentEvent })(SidePanel);

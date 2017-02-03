@@ -12,18 +12,18 @@ router.use(function timeLog (req, res, next) {
 
 // route for home page
 router.get('/',function (req, res) {
-	
+
 		return models.Event.findAll({
 			include: [{
         				model: models.Member
-         
+
      				 },
       				{
       	 				model: models.Book
       				},
 
       				{
-      				   model: models.Rsvp	
+      				   model: models.Rsvp
 	    			}
 
 
@@ -31,35 +31,40 @@ router.get('/',function (req, res) {
 		})
 
 	.then(function(results){
-		console.log(results);	
+		//console.log(results);
 			res.json(results);
-	});  	
-  
+	});
+
 });
-	
-// // define route adding new burger
-// router.post('/', function (req, res) {
-	
-// 	models.burgers.create(req.body)
-// 	.then(function(){
-// 		res.redirect('/');
-	
-// 	});
-  
-// });
+
+router.get('/:currentMonth',function (req, res) {
+    let yearMonth = req.params.currentMonth.split('-');
+    let year = parseInt(yearMonth[0]);
+    let month = parseInt(yearMonth[1]);
+
+		return models.Event.findOne({
+			include: [{
+        				model: models.Member
+     				 },
+      				{
+      	 				model: models.Book
+      				}
+            ],
+      where: {
+        $and: [
+          Sequelize.where(Sequelize.fn('YEAR', Sequelize.col('dt')), year),
+          Sequelize.where(Sequelize.fn('MONTH', Sequelize.col('dt')), month),
+        ]
+      }
+		})
+
+	.then(function(results){
+		  console.log(results);
+			res.json(results);
+	});
+
+});
 
 
-// // define route adding new burger also add the drink
-// router.put('/', function (req, res) {
-// 	models.burgers.update({devoured:true},{where:{id:req.body.id}})
-// 	.then(function(){
-// 		//when the user orders drinks to go with burger, drinks need to get stored in drinks table
-// 		return models.drinks.create({drink_name:req.body.drink_name,burgerId:req.body.id});
-		
-// 	})
-// 	.then(function(){
-// 		res.redirect('/');
-// 	})
-// });
 
 module.exports = router;

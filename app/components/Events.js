@@ -5,7 +5,7 @@ import { getEvents } from '../actions/event_actions';
 class Events extends Component{
 
 componentDidMount() {
-  
+
   this.props.getEvents();
 
 
@@ -30,7 +30,7 @@ return (
                           <i className="material-icons circle teal">today</i>
                           <span className="title">March 27, 2017</span>
                       </li>
-                 
+
                        <li className="collection-item avatar">
                           <i className="material-icons circle teal">today</i>
                           <span className="title">February 27, 2017</span>
@@ -65,17 +65,19 @@ return (
                           <h4 className="center">January 30, 2017</h4>
                       </div>
                   </div>
-                  
+
                   <div className="row">
                         <div className="container">
                           <p>JaimeLee Curtis</p>
                           <p>111 Main St, Beverely Hills, CA  90210</p>
                           <p>m. (310) 555-1234</p>
-                    
+
                           <h3>BOOK CHOICE:</h3>
                           <table>
+                            <tbody>
                             <tr><td>Title: </td><td>Atlas Shrugged</td></tr>
                             <tr><td>Author: </td><td>Ayn Rand</td></tr>
+                          </tbody>
                           </table>
 
                           <ul className="collection">
@@ -84,11 +86,11 @@ return (
                                   <span className="title">Are you going?</span>
                                   <div className="rsvp-response">
                                     <input name="rsvp" type="radio" id="rsvp-yes" />
-                                    <label for="rsvp-yes">YES</label>
+                                    <label htmlFor="rsvp-yes">YES</label>
                                     <input name="rsvp" type="radio" id="rsvp-no" />
-                                    <label for="rsvp-no">NO</label>
+                                    <label htmlFor="rsvp-no">NO</label>
                                     <input name="rsvp" type="radio" id="rsvp-maybe" />
-                                    <label for="rsvp-maybe">MAYBE</label>
+                                    <label htmlFor="rsvp-maybe">MAYBE</label>
                                   </div>
                               </li>
 
@@ -97,7 +99,7 @@ return (
                                   <span className="title">Angelina Jolie</span>
                                   <p>Replied: Yes</p>
                               </li>
-                         
+
                               <li className="collection-item avatar">
                                   <img src="img/bPitt.png" alt="" className="circle" />
                                   <span className="title">Brad Pitt</span>
@@ -122,13 +124,13 @@ return (
                                   <p>Awaiting reply</p>
                               </li>
                            </ul>
-           
-                          
+
+
                         </div>  {/*<!--closes className=container for data details -->*/}
                          {/*<!--closes row -->*/}
-                  </div>       
+                  </div>
              </div> {/* <!--closes container--> */}
-          
+
          </div> {/* <!--closes id main-panel--> */}
          </div>
 		);
@@ -140,17 +142,17 @@ Events.propTypes = {
 
   events : React.PropTypes.array
 
- 
+
 }
 
 function mapStateToProps(state){
 
-  
+
     return {
       events : state.events
     }
 
- 
+
 }
 
 
