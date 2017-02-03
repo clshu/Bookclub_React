@@ -45,15 +45,12 @@ module.exports = {
         type: Sequelize.STRING
       },
       aboutme: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       joindt: {
         type: Sequelize.DATE
       },
       piclink: {
-        type: Sequelize.STRING
-      },
-      username: {
         type: Sequelize.STRING
       },
       password: {
