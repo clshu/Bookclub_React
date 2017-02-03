@@ -1,7 +1,16 @@
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getPosts } from '../actions/post_actions';
 
 class News extends Component{
+
+componentDidMount() {
+  
+  this.props.getPosts();
+
+
+}
 
 	
 render(){
@@ -49,4 +58,22 @@ return (
 
 }
 
-export default News
+News.propTypes = {
+
+  posts : React.PropTypes.array
+
+ 
+}
+
+function mapStateToProps(state){
+
+  
+    return {
+      posts : state.posts
+    }
+
+ 
+}
+
+
+export default connect(mapStateToProps,{ getPosts })(News);

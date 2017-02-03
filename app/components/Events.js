@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getEvents } from '../actions/event_actions';
 
 class Events extends Component{
 
-	
+componentDidMount() {
+  
+  this.props.getEvents();
+
+
+}
+
 render(){
 
 return (
@@ -128,4 +136,22 @@ return (
 
 }
 
-export default Events
+Events.propTypes = {
+
+  events : React.PropTypes.array
+
+ 
+}
+
+function mapStateToProps(state){
+
+  
+    return {
+      events : state.events
+    }
+
+ 
+}
+
+
+export default connect(mapStateToProps,{ getEvents })(Events);
