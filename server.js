@@ -16,6 +16,8 @@ var flash    = require('connect-flash');
 const auth = require('./api/routes/auth');
 const feature = require('./api/routes/feature');
 const events = require('./api/routes/events');
+const members = require('./api/routes/members');
+const posts = require('./api/routes/posts');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -42,7 +44,9 @@ app.use(logger('combined'));
 app.use(flash());
 // Routes
 app.use('/auth', auth);
-app.use('/api/events',verifyToken,events);
+app.use('/api/members',members);
+app.use('/api/events',events);
+app.use('/api/posts',posts);
 
 // feature is for test purpose only
 app.use('/feature', verifyToken, feature);

@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getMembers } from '../actions/member_actions';
 
 class Members extends Component{
 
+
+componentDidMount() {
+  
+  this.props.getMembers();
+
+
+}
 	
 render(){
 
@@ -92,4 +101,22 @@ return (
 
 }
 
-export default Members
+Members.propTypes = {
+
+  members : React.PropTypes.array
+
+ 
+}
+
+function mapStateToProps(state){
+
+  
+    return {
+      members : state.members
+    }
+
+ 
+}
+
+
+export default connect(mapStateToProps,{ getMembers })(Members);
