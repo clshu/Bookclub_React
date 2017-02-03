@@ -12,23 +12,24 @@ router.use(function timeLog (req, res, next) {
 
 // route for home page
 router.get('/',function (req, res) {
-	sequelizeConnection.sync()
-		
-	.then(function(){
-		return models.Member.findAll({
+	
+		return models.Event.findAll({
 			include: [{
-        				model: models.Event,
-        			    include: [{
-        						model: models.Book
-        						}]
+        				model: models.Member
          
      				 },
       				{
-      	 			model: models.Post
-      				}
+      	 				model: models.Book
+      				},
+
+      				{
+      				   model: models.Rsvp	
+	    			}
+
+
       			  ]
 		})
-	})
+
 	.then(function(results){
 		console.log(results);	
 			res.json(results);
