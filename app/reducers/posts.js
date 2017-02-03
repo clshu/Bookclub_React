@@ -6,6 +6,10 @@ export default function posts(state = [], action = {}){
 
 	    return action.posts;
 
+	    case 'ADD_POST':
+
+	    return [ action.post ].concat(state);
+
 		default :
 
 		return state;
