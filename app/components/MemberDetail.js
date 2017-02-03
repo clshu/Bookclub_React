@@ -4,11 +4,45 @@ import { connect } from 'react-redux';
 
 class MemberDetail extends Component{
 
+constructor(props) {
+  super(props);
 
+
+  this.state = {
+    
+    memberId : 0,
+    member : {}
+
+    }
+  
+}
 	
+componentDidMount() {
+
+ 
+  console.log("params",this.props.params.id);
+}
+
+
+
+componentWillReceiveProps(nextProps) {
+
+
+  console.log("next params",nextProps.params.id);
+
+   this.setState({
+
+    member : this.props.members.find(e=>e.id=== this.props.params.id)
+  }); 
+
+
+
+
+}
+
 render(){
 
-  var { member } = this.props;
+  var { member } = this.state;
 
     let imglink;
 
@@ -88,7 +122,7 @@ function mapStateToProps(state){
 
   
     return {
-      member : state.members[0]
+      members : state.members
     }
 
  

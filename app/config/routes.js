@@ -45,7 +45,7 @@ const routes = (
             	<Route path="app" component={App}>
     				<Route path="news" component={News} />
     				<Route path="members" component={Members}>
-                       
+                        <Route path=":id"  component={MemberDetail} />
                         <IndexRoute component={MemberDetail} />
                     </Route>
     				<Route path="events" component={ Events} />
