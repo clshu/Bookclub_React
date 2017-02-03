@@ -33,7 +33,7 @@ export function getPosts(){
 }
 
 
-export function savePost(post){
+export function savePost(post,Member){
 
 	console.log(post);
 
@@ -52,7 +52,7 @@ return (despatch) => {
 		.then(data=>{
 			console.log("from add post")
 			console.log(data);
-			despatch(addPost(data));
+			despatch(addPost({...data,Member}));
 		});
 	}
 }

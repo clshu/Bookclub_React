@@ -36,8 +36,8 @@ router.get('/',function (req, res) {
 router.post('/new', function (req, res) {
 	console.log(req.body);
 	return models.Post.create(req.body)
-	.then(function(result){
-		res.json(result);
+	.then(function(post){
+		res.json(post);
 	
 	});
   

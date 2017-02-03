@@ -37,10 +37,10 @@ handleSubmit(e){
 
 		content: this.state.text,
 		postedon : moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
-		MemberId : this.props.MemberId
+		MemberId : this.props.Member.id
 
 
-	})
+	}, this.props.Member);
 }
 	
 render(){
@@ -70,7 +70,7 @@ function mapStateToProps(state){
   
     return {
 
-    	MemberId: state.auth.profile.id
+    	Member: state.auth.profile
       
     }
 
