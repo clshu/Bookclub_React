@@ -21,7 +21,7 @@ class SidePanel extends Component{
 		let address = `${host.address1}, ${host.city}, ${host.state} ${host.zip}`;
 		let year = eventTime.getFullYear();
 		let month = dateFormat(eventTime, "mmmm");
-		let date = dateFormat(eventTime, "mmmm dS, yyyy");
+		let date = dateFormat(eventTime, "yyyy-mm-dd");
 		let time = dateFormat(eventTime, "h:MM TT");
 
 		return (
