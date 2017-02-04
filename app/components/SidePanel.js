@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import dateFormat from 'dateformat';
 import { getCurrentEvent } from '../actions/event_actions';
 
 
 class SidePanel extends Component{
+	constructor	(props) {
+		super(props);
+		this.handleRSVP = this.handleRSVP.bind(this);
+		this.handleRateIt = this.handleRateIt.bind(this);
+	}
+
+	handleRateIt ()  {
+
+	}
+
+	handleRSVP () {
+		browserHistory.push('app/events');
+	}
 
 	componentDidMount() {
 		if (!this.props.currentEvent) {
@@ -55,7 +69,7 @@ class SidePanel extends Component{
                   </div>
               </div>
               <br/>
-              <a href="#" className="waves-effect waves-light btn">RSVP!</a>
+              <button className="waves-effect waves-light btn" onClick={this.handleRSVP}>RSVP!</button>
             </section>
       </div>
        {/*<!--closes id side-panel-->*/}
@@ -64,7 +78,7 @@ class SidePanel extends Component{
 	);
 
 
-}
+	}
 
 }
 

@@ -4,16 +4,13 @@ import { getEvents } from '../actions/event_actions';
 
 class Events extends Component{
 
-componentDidMount() {
+  componentDidMount() {
+    this.props.getEvents();
+  }
 
-  this.props.getEvents();
+  render() {
 
-
-}
-
-render(){
-
-return (
+    return (
     <div className="row">
 
             {/*<!--Member panel listing names and avatar -->*/}
@@ -139,21 +136,13 @@ return (
 }
 
 Events.propTypes = {
-
   events : React.PropTypes.array
-
-
 }
 
 function mapStateToProps(state){
-
-
     return {
       events : state.events
     }
-
-
 }
-
 
 export default connect(mapStateToProps,{ getEvents })(Events);
