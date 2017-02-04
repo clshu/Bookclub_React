@@ -37,11 +37,11 @@ return (
 
                          if(e.piclink){
 
-                          imglink = "img/"+  e.piclink ;
+                          imglink = "/img/"+  e.piclink ;
                         
                           }else{
                           
-                          imglink = "img/unknown.png"
+                          imglink = "/img/unknown.png"
 
                         }
 
