@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import dateFormat from 'dateformat';
 import { getCurrentEvent } from '../actions/event_actions';
+
 
 class SidePanel extends Component{
 
@@ -12,24 +14,22 @@ class SidePanel extends Component{
 
 	render() {
 		if (!this.props.currentEvent) return (<div></div>);
-		let monthNames = [
-		  "January", "February", "March",
-		  "April", "May", "June", "July",
-		  "August", "September", "October",
-		  "November", "December"
-		];
+
 		let eventTime = new Date(this.props.currentEvent.dt);
 		let book = this.props.currentEvent.Book;
 		let host = this.props.currentEvent.Member;
 		let address = `${host.address1}, ${host.city}, ${host.state} ${host.zip}`;
+		let year = eventTime.getFullYear();
+		let month = dateFormat(eventTime, "mmmm");
+		let date = dateFormat(eventTime, "mmmm dS, yyyy");
+		let time = dateFormat(eventTime, "h:MM TT");
 
 		return (
         <div id="side-panel">
         <div className="container">
             <section id="dateDisplay">
-              <h6 className="center">{eventTime.getFullYear()}</h6>
-              <h5 className="center">{monthNames[eventTime.getMonth
-								()]}</h5>
+              <h6 className="center">{year}</h6>
+              <h5 className="center">{month}</h5>
             </section>
             <section id="bookChoice">
               <h6>BOOK TITLE:</h6>
@@ -50,7 +50,7 @@ class SidePanel extends Component{
                   <div className="row">
                     <div className="card-content">
                       <h6 className="title">{host.fname} {host.lname}</h6><br/>
-                      <p>{this.props.currentEvent.dt}<br/> <br/>{address}<br/> m:{host.mobile}</p>
+                      <p>{date}<br/>{time}<br/>{address}<br/> m:{host.mobile}</p>
                     </div>
                   </div>
               </div>
