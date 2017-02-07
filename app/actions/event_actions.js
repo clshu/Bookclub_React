@@ -14,16 +14,14 @@ export function  setCurrentEvent(event){
 	}
 }
 
-
 export function getEvents(){
-
 
 	return (despatch) => {
 
 	fetch('/api/events')
 		.then(res=>res.json())
 		.then(data=>{
-			console.log(data);
+			//console.log(data);
 			despatch(setEvents(data))
 		});
 	}
@@ -43,7 +41,7 @@ export function getCurrentEvent(){
 		.then(res=>res.json())
 		.then(data=>{
 
-			//console.log(data);
+			console.log(data);
 			despatch(setCurrentEvent(data))
 		});
 	}

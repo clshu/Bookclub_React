@@ -37,6 +37,10 @@ class SidePanel extends Component{
 		let month = dateFormat(eventTime, "mmmm");
 		let date = dateFormat(eventTime, "yyyy-mm-dd");
 		let time = dateFormat(eventTime, "h:MM TT");
+		let imglink = "/img/unknown.png";
+    if (host.piclink){
+       imglink = `/img/${host.piclink}`;
+    }
 
 		return (
         <div id="side-panel">
@@ -59,7 +63,7 @@ class SidePanel extends Component{
               <h5 className="title">EVENT HOST</h5>
               <div className="card horizontal">
                   <div className="card-image">
-                      <img src="img/jCurtis.png" />
+                      <img src={imglink} />
                   </div>
                   <div className="row">
                     <div className="card-content">

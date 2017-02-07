@@ -9,10 +9,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       response: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        defaultValue: 0
       },
       rsvpon: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        default: Date.now()
       },
       createdAt: {
         allowNull: false,
