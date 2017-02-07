@@ -32,7 +32,7 @@ class EventDetail extends Component {
 
     let rsvpList = rsvps.map((rsvp) => {
       return (
-        <li className="collection-item avatar">
+        <li className="collection-item avatar" key={rsvp.Member.id}>
             <img src={`/img/${rsvp.Member.piclink}`} alt="" className="circle" />
             <span className="title">{rsvp.Member.fname} {rsvp.Member.lname}</span>
             <p>Replied: {this.mapNumberToResponse(rsvp.response)}</p>
@@ -77,7 +77,7 @@ class EventDetail extends Component {
                               <label htmlFor="rsvp-maybe">MAYBE</label>
                             </div>
                         </li>
-                        
+
                         {rsvpList}
                      </ul>
 
