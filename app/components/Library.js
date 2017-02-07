@@ -24,18 +24,13 @@ return (
             <div className="col sm12 m5 lg5">
             <div className="choice-panel">
                   <ul className="collection">
-                      <Link to="/app/books/edit" >
-                      <li className="collection-item avatar">
-                          <a href="#"><i className="material-icons circle teal">mode_edit</i>
-                          <span className="title">Edit my profile</span></a>
-                      </li>
-                       </Link>
+                      
 
 
                       { this.props.books.map(e=>{
 
                        
-                        let detailLink ="/app/books/"+e.id;
+                        let detailLink ="/app/library/"+e.id;
 
                        
 
@@ -44,7 +39,7 @@ return (
                        <Link to={ detailLink } >
                          <li className="collection-item avatar">
                             <i className="material-icons circle teal">library_books</i>
-                            <span className="title">{ e.title }</span>
+                            <span className="title">{ e.title.toUpperCase() }</span>
                         </li>
                       </Link>
 

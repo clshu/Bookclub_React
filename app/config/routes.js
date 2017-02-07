@@ -16,6 +16,7 @@ import MemberDetail from '../components/MemberDetail';
 import MemberForm from '../components/MemberForm';
 import News from '../components/News';
 import Library from '../components/Library';
+import BookDetail from '../components/BookDetail';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
 import EnsureLoggedInContainer from '../components/EnsureLoggedInContainer';
@@ -66,7 +67,8 @@ const routes = (
           	        </Route>
 
                     <Route path="library" component={Library}>
-                        
+                        <Route path=":id"  component={BookDetail} />
+                        <IndexRoute component={BookDetail} />
                     </Route>
 
 					<IndexRoute component={ News } />
