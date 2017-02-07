@@ -24,3 +24,17 @@ export function getBooks(){
 	}
 }
 
+
+export function saveRating(rating){
+
+	
+	// return (despatch) => {
+
+	// fetch('/api/books')
+	// 	.then(res=>res.json())
+	// 	.then(data=>{
+	// 		console.log(data);
+	// 		despatch(setBooks(data))
+	// 	});
+	// }
+}

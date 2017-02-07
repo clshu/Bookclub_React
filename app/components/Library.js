@@ -36,7 +36,7 @@ return (
 
                      return (
 
-                       <Link to={ detailLink } >
+                       <Link to={ detailLink } key={e.id}>
                          <li className="collection-item avatar">
                             <i className="material-icons circle teal">library_books</i>
                             <span className="title">{ e.title.toUpperCase() }</span>
