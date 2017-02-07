@@ -22,6 +22,8 @@ router.get('/', function(req, res) {
                 model: models.Book
             }, {
                 model: models.Rsvp,
+                include: [ {model: models.Member, attributes: ['id', 'fname', 'lname', 'piclink']} ],
+
             }
         ],
         order: [
