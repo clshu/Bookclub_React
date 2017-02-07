@@ -10,6 +10,7 @@ import { BrowserRouter } from 'react-router';
 import App from '../components/App';
 import Main from '../components/Main';
 import Events from '../components/Events';
+import EventDetail from '../components/EventDetail';
 import Members from '../components/Members';
 import MemberDetail from '../components/MemberDetail';
 import News from '../components/News';
@@ -27,8 +28,8 @@ const defaultState = {
 
 };
 
-const store;
-if (NODE_ENV !== 'production') {
+let store;
+if (process.env.NODE_ENV !== 'production') {
 	store = createStore(rootReducer, //defaultState);
 	composeWithDevTools(applyMiddleware(thunk)));
 } else {
@@ -53,8 +54,11 @@ const routes = (
     				<Route path="members" component={Members}>
                         <Route path=":id"  component={MemberDetail} />
                         <IndexRoute component={MemberDetail} />
-                    </Route>
-    				<Route path="events" component={ Events} />
+            </Route>
+						<Route path="events" component={Events}>
+                        <Route path=":id"  component={EventDetail} />
+                        <IndexRoute component={EventDetail} />
+          	</Route>
 					<IndexRoute component={ News } />
     			</Route>
     			<IndexRoute component={App} />

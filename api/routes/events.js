@@ -1,70 +1,71 @@
 var router = require('express').Router();
-var models  = require('../models');
+var models = require('../models');
 var sequelizeConnection = models.sequelize;
 var Sequelize = models.Sequelize;
 
-
 // middleware that is specific to this router - logs time of request
-router.use(function timeLog (req, res, next) {
-  console.log('Time: ', Date.now())
-  next();
+router.use(function timeLog(req, res, next) {
+    console.log('Time: ', Date.now())
+    next();
 });
 
-// route for home page
-router.get('/',function (req, res) {
+//  GET /api/events
+router.get('/', function(req, res) {
 
-		return models.Event.findAll({
-			include: [{
-        				model: models.Member
+    return models.Event.findAll({
 
-     				 },
-      				{
-      	 				model: models.Book
-      				},
+        include: [
+            {
+                model: models.Member
 
-      				{
-      				   model: models.Rsvp
-	    			}
+            }, {
+                model: models.Book
+            }, {
+                model: models.Rsvp,
+            }
+        ],
+        order: [
+            ['dt', 'DESC'],
+            [models.Rsvp, 'response', 'DESC']
+        ]
 
-
-      			  ]
-		})
-
-	.then(function(results){
-		//console.log(results);
-			res.json(results);
-	});
+    }).then(function(results) {
+        console.log(results);
+        res.json(results);
+    });
 
 });
 
-router.get('/:currentMonth',function (req, res) {
+// GET /api/events/:currentMonth
+router.get('/:currentMonth', function(req, res) {
     let yearMonth = req.params.currentMonth.split('-');
     let year = parseInt(yearMonth[0]);
     let month = parseInt(yearMonth[1]);
 
-		return models.Event.findOne({
-			include: [{
-        				model: models.Member
-     				 },
-      				{
-      	 				model: models.Book
-      				}
-            ],
-      where: {
-        $and: [
-          Sequelize.where(Sequelize.fn('YEAR', Sequelize.col('dt')), year),
-          Sequelize.where(Sequelize.fn('MONTH', Sequelize.col('dt')), month),
+    return models.Event.findOne({
+        include: [
+            {
+                model: models.Member
+            }, {
+                model: models.Book
+            }, {
+                model: models.Rsvp
+            }
+        ],
+        where: {
+            $and: [
+                Sequelize.where(Sequelize.fn('YEAR', Sequelize.col('dt')), year),
+                Sequelize.where(Sequelize.fn('MONTH', Sequelize.col('dt')), month)
+            ]
+        },
+        order: [
+            [models.Rsvp, 'response', 'DESC']
         ]
-      }
-		})
-
-	.then(function(results){
-		  console.log(results);
-			res.json(results);
-	});
+    }).then(function(results) {
+        //console.log(results);
+        res.json(results);
+    });
 
 });
-
-
 
 module.exports = router;
