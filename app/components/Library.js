@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { getMembers } from '../actions/member_actions';
+import { getBooks } from '../actions/book_actions';
 
 class Library extends Component{
 
 
 componentDidMount() {
   
-  this.props.getMembers();
+  this.props.getBooks();
 
 
 }
@@ -24,7 +24,7 @@ return (
             <div className="col sm12 m5 lg5">
             <div className="choice-panel">
                   <ul className="collection">
-                      <Link to="/app/members/edit" >
+                      <Link to="/app/books/edit" >
                       <li className="collection-item avatar">
                           <a href="#"><i className="material-icons circle teal">mode_edit</i>
                           <span className="title">Edit my profile</span></a>
@@ -32,27 +32,19 @@ return (
                        </Link>
 
 
-                      { this.props.members.map(e=>{
+                      { this.props.books.map(e=>{
 
-                        let imglink;
-                        let detailLink ="/app/members/"+e.id;
+                       
+                        let detailLink ="/app/books/"+e.id;
 
-                         if(e.piclink){
-
-                          imglink = "/img/"+  e.piclink ;
-                        
-                          }else{
-                          
-                          imglink = "/img/unknown.png"
-
-                        }
+                       
 
                      return (
 
                        <Link to={ detailLink } >
                          <li className="collection-item avatar">
-                            <img src={ imglink } alt="" className="circle" />
-                            <span className="title">{ e.fname} {e.lname}</span>
+                            <i className="material-icons circle teal">library_books</i>
+                            <span className="title">{ e.title }</span>
                         </li>
                       </Link>
 
@@ -83,9 +75,9 @@ return (
 
 }
 
-Members.propTypes = {
+Library.propTypes = {
 
-  members : React.PropTypes.array
+  books : React.PropTypes.array
 
  
 }
@@ -94,11 +86,11 @@ function mapStateToProps(state){
 
   
     return {
-      members : state.members
+      books : state.books
     }
 
  
 }
 
 
-export default connect(mapStateToProps,{ getMembers })(Library);
+export default connect(mapStateToProps,{ getBooks })(Library);
