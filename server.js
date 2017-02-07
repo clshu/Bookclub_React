@@ -18,7 +18,7 @@ const feature = require('./api/routes/feature');
 const events = require('./api/routes/events');
 const members = require('./api/routes/members');
 const posts = require('./api/routes/posts');
-const rsvps = require('./api/routes/rsvps');
+
 
 const PORT = process.env.PORT || 3000;
 const app = express();
