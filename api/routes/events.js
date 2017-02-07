@@ -22,7 +22,7 @@ router.get('/', function(req, res) {
                 model: models.Book
             }, {
                 model: models.Rsvp,
-                include: [ {model: models.Member, attributes: ['id', 'fname', 'lname', 'piclink']} ],
+                include: [ {model: models.Member, attributes: ['id', 'fname', 'lname', 'piclink']} ]
 
             }
         ],
@@ -51,7 +51,8 @@ router.get('/:currentMonth', function(req, res) {
             }, {
                 model: models.Book
             }, {
-                model: models.Rsvp
+                model: models.Rsvp,
+                include: [ {model: models.Member, attributes: ['id', 'fname', 'lname', 'piclink']} ]
             }
         ],
         where: {

@@ -30,6 +30,15 @@ class EventDetail extends Component {
        imglink = `/img/${host.piclink}`;
     }
 
+    let rsvpList = rsvps.map((rsvp) => {
+      return (
+        <li className="collection-item avatar">
+            <img src={`/img/${rsvp.Member.piclink}`} alt="" className="circle" />
+            <span className="title">{rsvp.Member.fname} {rsvp.Member.lname}</span>
+            <p>Replied: {this.mapNumberToResponse(rsvp.response)}</p>
+        </li>
+      )
+    })
     return (
       <div className="detail-panel">
             <div className="row">
@@ -68,36 +77,8 @@ class EventDetail extends Component {
                               <label htmlFor="rsvp-maybe">MAYBE</label>
                             </div>
                         </li>
-
-                        <li className="collection-item avatar">
-                            <img src="img/aJolie.png" alt="" className="circle" />
-                            <span className="title">Angelina Jolie</span>
-                            <p>Replied: Yes</p>
-                        </li>
-
-                        <li className="collection-item avatar">
-                            <img src="img/bPitt.png" alt="" className="circle" />
-                            <span className="title">Brad Pitt</span>
-                            <p>Replied: No</p>
-                        </li>
-
-                        <li className="collection-item avatar">
-                            <img src="img/cGooding.png" alt="" className="circle" />
-                            <span className="title">Cuba Gooding Jr.</span>
-                            <p>Replied: Maybe</p>
-                        </li>
-
-                        <li className="collection-item avatar">
-                            <img src="img/jCurtis.png" alt="" className="circle" />
-                            <span className="title">Jaime Lee Curtis</span>
-                            <p>Replied: Yes</p>
-                        </li>
-
-                        <li className="collection-item avatar">
-                            <img src="img/kReeves.png" alt="" className="circle" />
-                            <span className="title">Keanu Reeves</span>
-                            <p>Awaiting reply</p>
-                        </li>
+                        
+                        {rsvpList}
                      </ul>
 
 
