@@ -27,20 +27,26 @@ const defaultState = {
 
 };
 
-const store = createStore(rootReducer, //defaultState);
-composeWithDevTools(applyMiddleware(thunk)));
+const store;
+if (NODE_ENV !== 'production') {
+	store = createStore(rootReducer, //defaultState);
+	composeWithDevTools(applyMiddleware(thunk)));
+} else {
+	store = createStore(rootReducer, //defaultState);
+	applyMiddleware(thunk));
+}
 
 
 const routes = (
-  
+
   <Provider store={store}>
 	  <Router history={browserHistory}>
 
-	    		
+
 	    <Route path="/" component={Main}>
 	    	<Route path="login" component={Login} />
             <Route path="signup" component={Signup} />
-    		
+
             <Route component={EnsureLoggedInContainer}>
             	<Route path="app" component={App}>
     				<Route path="news" component={News} />
@@ -53,7 +59,7 @@ const routes = (
     			</Route>
     			<IndexRoute component={App} />
     		</Route>
-    		
+
 	    </Route>
 	</Router>
 </Provider>
