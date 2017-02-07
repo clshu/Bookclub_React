@@ -24,10 +24,12 @@ return (
             <div className="col sm12 m5 lg5">
             <div className="choice-panel">
                   <ul className="collection">
+                      <Link to="/app/members/edit" >
                       <li className="collection-item avatar">
                           <a href="#"><i className="material-icons circle teal">mode_edit</i>
                           <span className="title">Edit my profile</span></a>
                       </li>
+                       </Link>
 
 
                       { this.props.members.map(e=>{
