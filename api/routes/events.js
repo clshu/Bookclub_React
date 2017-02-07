@@ -16,7 +16,8 @@ router.get('/', function(req, res) {
 
         include: [
             {
-                model: models.Member
+                model: models.Member,
+                attributes: { exclude: ['password']}
 
             }, {
                 model: models.Book
@@ -47,7 +48,8 @@ router.get('/:currentMonth', function(req, res) {
     return models.Event.findOne({
         include: [
             {
-                model: models.Member
+                model: models.Member,
+                attributes: { exclude: ['password']}
             }, {
                 model: models.Book
             }, {
