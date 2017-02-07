@@ -18,6 +18,7 @@ const feature = require('./api/routes/feature');
 const events = require('./api/routes/events');
 const members = require('./api/routes/members');
 const posts = require('./api/routes/posts');
+const books = require('./api/routes/books');
 
 
 const PORT = process.env.PORT || 3000;
@@ -48,7 +49,7 @@ app.use('/auth', auth);
 app.use('/api/members',members);
 app.use('/api/events',events);
 app.use('/api/posts',posts);
-
+app.use('/api/books',books);
 // feature is for test purpose only
 app.use('/feature', verifyToken, feature);
 //app.use('/events', verifyToken, events);

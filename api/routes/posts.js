@@ -30,9 +30,7 @@ router.get('/',function (req, res) {
 	
 
 
-// Add a post
-
-// define route adding new burger
+// route for new post
 router.post('/new', function (req, res) {
 	console.log(req.body);
 	return models.Post.create(req.body)
