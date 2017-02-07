@@ -46,11 +46,11 @@ handleSubmit(e){
 render(){
 
 	return (
-		   <div className="input-field">
+		   <div className="input-field valign-wrapper">
                 <input id="newsPost" type="text" name= "text" value={ this.state.text } onChange={ this.handleChange} className="validate" placeholder="What's on your mind?"></input>
                
                 
-                <button className="btn-sm right" name="action" onClick ={ this.handleSubmit }>Submit</button><br/>
+                <button className="btn right valign-bottom" name="action" onClick ={ this.handleSubmit }>Submit</button><br/>
             </div>
 
 			);

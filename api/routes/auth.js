@@ -29,6 +29,8 @@ router.post('/signin', verifyLogin, function(req, res, next) {
 })
 
 router.post('/signup', function(req, res, next) {
+
+	console.log(req.body);
 	const email = req.body.email;
 	const password = req.body.password;
 
@@ -49,7 +51,21 @@ router.post('/signup', function(req, res, next) {
 			// before reall creation happens
 			models.Member.create({
 				email: email,
-				password: password
+				password: password,
+
+			    fname: req.body.fname,
+				lname: req.body.lname,
+				address1: req.body.address1,
+				city: req.body.city,
+				state: req.body.state,
+				zip: req.body.zip,
+				mobile: req.body.mobile,
+				favebook1: req.body.favebook1,
+				favbook2: req.body.favbook2,
+				favbook3: req.body.favbook3,
+				aboutme: req.body.aboutme,
+				jointdt: req.body.joindt
+		
 			})
 			.then(function(member) {
 				member.password = undefined; // Don't send password back to frontend

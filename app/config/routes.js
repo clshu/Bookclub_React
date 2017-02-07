@@ -13,6 +13,7 @@ import Events from '../components/Events';
 import EventDetail from '../components/EventDetail';
 import Members from '../components/Members';
 import MemberDetail from '../components/MemberDetail';
+import MemberForm from '../components/MemberForm';
 import News from '../components/News';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
@@ -52,7 +53,9 @@ const routes = (
             	<Route path="app" component={App}>
     				<Route path="news" component={News} />
     				<Route path="members" component={Members}>
+                        <Route path="edit"  component={MemberForm} />
                         <Route path=":id"  component={MemberDetail} />
+                       
                         <IndexRoute component={MemberDetail} />
             </Route>
 						<Route path="events" component={Events}>

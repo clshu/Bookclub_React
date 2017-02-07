@@ -39,7 +39,7 @@ render(){
                   <div className="row">
                 
                         <div className="container">
-                          <p>currentMember since: { currentMember.joindt }</p>
+                          <p>Member since: { currentMember.joindt }</p>
                           <p>{ currentMember.address1 }, { currentMember.city }, { currentMember.state }  { currentMember.zip }</p>
                           <p>m. { currentMember.mobile }</p>
                           <br />
