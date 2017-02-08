@@ -32,16 +32,16 @@ return (
                   let imglink;
                   if(e.Member.piclink){
 
-                    imglink = "img/"+  e.Member.piclink ;
+                    imglink = "/img/"+  e.Member.piclink ;
                   }else{
-                    imglink = "img/unknown.png"
+                    imglink = "/img/unknown.png"
 
                   }
 
 
                   return (
 
-                   <li className = "collection-item avatar">
+                   <li className = "collection-item avatar" key={e.id}>
                       <img src={ imglink } alt="" className="circle"/>
                       <span className="title">{ e.Member.fname } { e.Member.lname }</span>
                       <p>{e.postedon}</p>

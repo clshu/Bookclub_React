@@ -15,6 +15,8 @@ import Members from '../components/Members';
 import MemberDetail from '../components/MemberDetail';
 import MemberForm from '../components/MemberForm';
 import News from '../components/News';
+import Library from '../components/Library';
+import BookDetail from '../components/BookDetail';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
 import EnsureLoggedInContainer from '../components/EnsureLoggedInContainer';
@@ -51,17 +53,24 @@ const routes = (
 
             <Route component={EnsureLoggedInContainer}>
             	<Route path="app" component={App}>
+
     				<Route path="news" component={News} />
     				<Route path="members" component={Members}>
                         <Route path="edit"  component={MemberForm} />
                         <Route path=":id"  component={MemberDetail} />
                        
                         <IndexRoute component={MemberDetail} />
-            </Route>
-						<Route path="events" component={Events}>
+                    </Route>
+					<Route path="events" component={Events}>
                         <Route path=":id"  component={EventDetail} />
                         <IndexRoute component={EventDetail} />
-          	</Route>
+          	        </Route>
+
+                    <Route path="library" component={Library}>
+                        <Route path=":id"  component={BookDetail} />
+                        <IndexRoute component={BookDetail} />
+                    </Route>
+
 					<IndexRoute component={ News } />
     			</Route>
     			<IndexRoute component={App} />

@@ -13,33 +13,41 @@ router.use(function timeLog (req, res, next) {
 // route for home page
 router.get('/',function (req, res) {
 	
-		return models.Post.findAll({
+		models.Book.findAll({
 			include: [{
-        				model: models.Member
-         
+        				model: models.Rating,
+        			    include: [{
+        						model: models.Member,
+        						attributes: ['id', 'fname', 'lname', 'piclink']
+        					    } 
+        						]
      				 }
-      			  ],
-      	     order: [
-            ['postedon', 'DESC']]
-		})
 
+      			  ],
+      			 order: [
+            ['title'],
+            [models.Rating, 'ratedon', 'DESC']
+        	]
+		})
+	
 	.then(function(results){
 		console.log(results);	
 			res.json(results);
 	});  	
   
 });
-	
 
 
-// route for new post
-router.post('/new', function (req, res) {
+router.post('/newrating',function (req, res) {
+
 	console.log(req.body);
-	return models.Post.create(req.body)
-	.then(function(post){
-		res.json(post);
 	
-	});
+	models.Rating.create(req.body)
+	
+	.then(function(data){
+		console.log(data);	
+		res.json(data);
+	})
   
 });
 

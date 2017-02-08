@@ -26,8 +26,8 @@ return (
                   <ul className="collection">
                       <Link to="/app/members/edit" >
                       <li className="collection-item avatar">
-                          <a href="#"><i className="material-icons circle teal">mode_edit</i>
-                          <span className="title">Edit my profile</span></a>
+                          <i className="material-icons circle teal">mode_edit</i>
+                          <span className="title">Edit my profile</span>
                       </li>
                        </Link>
 
@@ -49,7 +49,7 @@ return (
 
                      return (
 
-                       <Link to={ detailLink } >
+                       <Link to={ detailLink } key={e.id}>
                          <li className="collection-item avatar">
                             <img src={ imglink } alt="" className="circle" />
                             <span className="title">{ e.fname} {e.lname}</span>

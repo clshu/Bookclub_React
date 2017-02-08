@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>Book Club</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Dancing+Script|Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+
+    
+</head>
+
+<body>
+<div id="main">
+        <div class="navigation">
+
+                <!--dropdown structure -->
+                <ul id="dropdown1" class="dropdown-content">
+                    <li><a href="#">Edit my profile</a></li>
+                    <li><a href="#">Log-off</a></li>
+                    <li><a href="#">three</a></li>
+                </ul>
+                <!--Header navigation and Logo-->
+                <nav>
+                    <div class="nav-wrapper">
+                    <a href="news.html" class="brand-logo">Neighborhood Book Club</a>
+                        <ul class="right hide-on-med-and-down">
+                            <li> Welcome, Angelina</li>
+                            <li><a class="dropdown-button" href="#" data-activates="dropdown1">
+                            <i class="material-icons right">menu</i></a></li>
+                        </ul>
+                    </div>
+                </nav>
+        </div>  <!--close id=navigation -->
+
+        <div class="row">
+
+        <div class="col s12 m3 l3">
+        <div class="side-panel">
+            <div class="container">
+
+                <section id="date-display">
+                    <h6 class="center">2017</h6>
+                    <h5 class="center">JANUARY</h5>
+                </section>
+
+                <section id="book-choice">
+                    <h6>BOOK TITLE: </h6>
+                    <h4>Atlas Shrugged</h4>
+                    <br />
+                    <h6>AUTHOR: </h6>
+                    <h4>Ayn Rand</h4>
+                    <br />
+                    <a href="library.html" class="waves-light center btn">Rate It!</a>
+                    <br></br>
+                </section>
+
+                <section id="host-info">
+                    <h5 class="title">EVENT HOST</h5>
+                    <div class="card-horizontal">
+                        <div class="card-image">
+                            <img src="img/jCurtis.png"></img>
+                            <p>January 30, 2017<br />700p-900p,<br />111 Main St., Beverly Hills, CA 90210<br />m:(310)555-1234</p>
+                        </div>
+                    </div>
+                    <a href="events.html" class="waves-light center btn">RSVP!</a>
+                    <br></br>
+                </section>
+
+            </div>
+        </div>  <!--close class=side-panel -->
+        </div>  <!--close class= col -->
+
+
+        <div class="col s12 m9 l9">
+        <div class="main-panel"> 
+
+            <!--Main panel NAV bar -->
+            <nav class="panel-nav">
+                <div class="nav-wrapper">
+                    <ul id="nav-mobile" class="left hide-on-med-and-down">
+                        <li><a href="news.html">NEWS</a></li>
+                        <li><a href="members.html">MEMBERS</a></li>
+                        <li><a href="events.html">EVENTS</a></li>
+                        <li class="active"><a href="library.html">LIBRARY</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+           <div class="row">
+
+                <div class="col s12 m3 l3">
+                <div class="list-panel"> 
+
+                    <ul class="collection">
+
+                      <li class="collection-item avatar">
+                          <i class="material-icons circle teal">library_books</i>
+                          <span class="title">Atlas Shrugged</span>
+                      </li>
+                 
+                       <li class="collection-item avatar active">
+                          <i class="material-icons circle teal">library_books</i>
+                          <span class="title">Don Quijote</span>
+                      </li>
+
+                      <li class="collection-item avatar">
+                          <i class="material-icons circle teal">library_books</i>
+                          <span class="title">Great Gatsby</span>
+                      </li>
+
+                       <li class="collection-item avatar">
+                          <i class="material-icons circle teal">library_books</i>
+                          <span class="title">Hamlet</span>
+                      </li>
+
+                       <li class="collection-item avatar">
+                          <i class="material-icons circle teal">library_books</i>
+                          <span class="title">The Odyssey</span>
+                      </li>
+                  </ul>
+
+                </div> <!--closes class=col-->
+                </div> <!--closes class=list-panel -->
+
+                <div class="col s12 m9 l9">
+                <div class="detail-panel"> 
+                  
+                    <div id="book-rating">
+                       <h5 class="panel-title">Rate the Book!</h5>
+                       <div class="input-field">
+                          <input id="libraryPost" type="text" class="validate" placeholder="Comments"></input>
+                       </div>
+
+
+>
+
+
+                    <div class="stars">
+                        <input type="radio" id="star-1" name="star" value="1"></input>
+                        <label for="star-1" title="text">1 star</label>
+                        <input type="radio" id="star-2" name="star" value="2"></input>
+                        <label for="star-2" title="text">2 star</label>
+                        <input type="radio" id="star-3" name="star" value="3"></input>
+                        <label for="star-3" title="text">3 star</label>
+                        <input type="radio" id="star-4" name="star" value="4"></input>
+                        <label for="star-4" title="text">4 star</label>
+                        <input type="radio" id="star-5" name="star" value="5"></input>
+                        <label for="star-5" title="text">5 star</label>
+                    </div>
+  
+
+                    <button class="btn-sm right" type="submit" name="action">Submit</button><br />
+                    </div>
+
+                    <!--Avatar content of stacked posts -->
+                    <ul class="collection">
+                        <li class="collection-item avatar">
+                            <img src="img/jCurtis.png" alt="" class="circle">
+                            <span class="title">JaimeLee Curtis</span>
+                            <p>January 17, 2017:  4:35pm</p>
+                            <p>What a happy, sad, funny, serious book! Loved it!<br />5 STARS</p>
+                        </li>
+
+                        <li class="collection-item avatar">
+                            <img src="img/aJolie.png" alt="" class="circle">
+                            <span class="title">Angelina Jolie</span>
+                            <p>January 25, 2017:  7:00pm</p>
+                            <p>I had a hard time finishing it.  It was over 1000pgs<br />3 STARS</p>
+                        </li>
+
+                        <li class="collection-item avatar">
+                            <img src="img/bPitt.png" alt="" class="circle">
+                            <span class="title">Brad Pitt</span>
+                            <p>January 21, 2017:  3:31pm</p>
+                            <p>I think I'll turn this into a movie! <br />5 STARS</p>
+                        </li>
+
+                    </ul>
+                </div> 
+                </div> <!--closes class = row col 9 detailpanel -->
+
+                     
+                 
+                </div> <!--closes class=detail-panel -->
+                </div> <!--closes class=col -->
+
+
+           </div>      <!--closes class=row detail-panel -->
+
+        </div>  <!--close id=main-panel -->
+        </div>  <!--close class=col -->
+
+        </div>  <!--close class= row -->
+
+</div>  <!--id=main -->
+
+
+
+
+
+        <!--  Scripts-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+
+
+
+
+</body>
+</html>

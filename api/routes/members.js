@@ -12,18 +12,18 @@ router.use(function timeLog (req, res, next) {
 
 // route for home page
 router.get('/',function (req, res) {
-	//sequelizeConnection.sync()
-		
 	
 		models.Member.findAll({
-			include: [{
-        				model: models.Event,
-        			    include: [{
-        						model: models.Book
-        						}]
+			// include: [{
+   //      				model: models.Event,
+   //      			    include: [{
+   //      						model: models.Book
+   //      						}]
          
-     				 }
-      			  ]
+   //   				 }
+   //    			  ],
+      		order: [
+            ['fname']]
 		})
 	
 	.then(function(results){
@@ -35,7 +35,7 @@ router.get('/',function (req, res) {
 
 
 router.put('/edit',function (req, res) {
-	//sequelizeConnection.sync()
+
 		console.log(req.body);
 	
 		models.Member.update({
@@ -59,9 +59,7 @@ router.put('/edit',function (req, res) {
 	
 	
 	.then(function(results){
-		// console.log(results);	
-		// res.json(results);
-
+		
 		return models.Member.findById(req.body.id);
 	})
 	.then(function(data){
@@ -72,16 +70,5 @@ router.put('/edit',function (req, res) {
 });
 
 
-// router.put('/', function (req, res) {
-// 	models.burgers.update({devoured:true},{where:{id:req.body.id}})
-// 	.then(function(){
-// 		//when the user orders drinks to go with burger, drinks need to get stored in drinks table
-// 		return models.drinks.create({drink_name:req.body.drink_name,burgerId:req.body.id});
-		
-// 	})
-// 	.then(function(){
-// 		res.redirect('/');
-// 	})
-// });
 
 module.exports = router;
