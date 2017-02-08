@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <title>Book Club</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Dancing+Script|Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+<body>
+<div id="main">
+        <!--Navigation bar and logo -->
+        <div class="navigation">
+
+                <!--dropdown structure -->
+                <ul id="dropdown1" class="dropdown-content">
+                    <li><a href="#">Edit my profile</a></li>
+                    <li><a href="#">Log-off</a></li>
+                    <li><a href="#">three</a></li>
+                </ul>
+                <!--Header navigation and Logo-->
+                <nav>
+                    <div class="nav-wrapper">
+                    <a href="news.html" class="brand-logo">Neighborhood Book Club</a>
+                        <ul class="right hide-on-med-and-down">
+                            <li> Welcome, Angelina</li>
+                            <li><a class="dropdown-button" href="#" data-activates="dropdown1">
+                            <i class="material-icons right">menu</i></a></li>
+                        </ul>
+                    </div>
+                </nav>
+        </div>  <!--close id=navigation -->
+
+        <div class="row">
+
+        <div class="col s12 m3 l3">
+        <div class="side-panel">
+            <div class="container">
+
+                <section id="date-display">
+                    <h6 class="center">2017</h6>
+                    <h5 class="center">JANUARY</h5>
+                </section>
+
+                <section id="book-choice">
+                    <h6>BOOK TITLE: </h6>
+                    <h4>Atlas Shrugged</h4>
+                    <br />
+                    <h6>AUTHOR: </h6>
+                    <h4>Ayn Rand</h4>
+                    <br />
+                    <a href="library.html" class="waves-light center btn">Rate It!</a>
+                    <br></br>
+                </section>
+
+                <section id="host-info">
+                    <h5 class="title">EVENT HOST</h5>
+                    <div class="card-horizontal">
+                        <div class="card-image">
+                            <img src="img/jCurtis.png"></img>
+                            <p>January 30, 2017<br />700p-900p,<br />111 Main St., Beverly Hills, CA 90210<br />m:(310)555-1234</p>
+                        </div>
+                    </div>
+                    <a href="events.html" class="waves-light center btn">RSVP!</a>
+                    <br></br>
+                </section>
+
+            </div>
+        </div>  <!--close class=side-panel -->
+        </div>  <!--close class= col -->
+
+
+        <div class="col s12 m9 l9">
+        <div class="main-panel"> 
+
+            <!--Main panel NAV bar -->
+            <nav class="panel-nav">
+                <div class="nav-wrapper">
+                    <ul id="nav-mobile" class="left hide-on-med-and-down">
+                        <li><a href="news.html">NEWS</a></li>
+                        <li class="active"><a href="members.html">MEMBERS</a></li>
+                        <li><a href="events.html">EVENTS</a></li>
+                        <li><a href="library.html">LIBRARY</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            
+           <div class="row">
+            <!--List panel form shows only logged in member -->
+                <div class="col s12 m3 l3">
+                <div class="list-panel"> 
+                    <h5>My Profile</h5>
+                    <ul class="collection">
+                      <li class="collection-item avatar">
+                          <img src="img/aJolie.png" alt="" class="circle">
+                          <span class="title">Anglina Jolie</span>
+                      </li>
+                  </ul>
+                </div> <!--closes class=col-->
+                </div> <!--closes class=list-panel -->
+
+             <!--Detail panel form entry-->
+                <div class="col s12 m9 l9">
+                <div class="detail-panel"> 
+                    <div class="row">
+                      <div class="col sm3 m3 l3">
+                          <div row>
+                            <img src="img/aJolie.png" alt="" class="avatar"></img>
+                          </div>
+                          <div row>
+                              <a href="#">Upload photo</a>
+                          </div>
+                      </div>
+                    </div>
+
+                    <!--Detail Panel form -->
+                    <div class="container">
+                      <div class="row">
+                          <div class="input-field col s6">
+                               <input id="first_name" type="text" class="validate">
+                               <label for="first_name">First Name</label> 
+                          </div>
+
+                          <div class="input-field col s6">
+                               <input id="last_name" type="text" class="validate">
+                               <label for="last_name">Last Name</label> 
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="input-field col s6">
+                              <input id="email" type="text" class="validate">
+                               <label for="email">Email</label> 
+                          </div>
+
+                          <div class="input-field col s6">
+                              <input id="password" type="text" class="validate">
+                               <label for="password">Password</label> 
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="input-field col s12">
+                              <input id="mobile" type="text" class="validate">
+                               <label for="mobile">Mobile</label> 
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="input-field col s12">
+                              <input id="address" type="text" class="validate">
+                               <label for="address">Address</label> 
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <div class="input-field col s5">
+                              <input id="city" type="text" class="validate">
+                               <label for="city">City</label> 
+                          </div>
+
+                          <div class="input-field col s3">
+                              <input id="state" type="text" class="validate">
+                               <label for="state">State</label> 
+                          </div>
+
+                          <div class="input-field col s4">
+                              <input id="zip" type="text" class="validate">
+                               <label for="zip">Zip</label> 
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <h5>My Story...</h5>
+                          <div class="input-field col s12">
+                              <textarea id="about" class="materialize-textarea"></textarea>
+                              <label for="textarea1">A little about me</label>
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <h5>Favorite books I've read</h5>
+                          <div class="input-field col s12">
+                              <input id="book1" type="text" class="validate">
+                               <label for="book1">1) Title</label> 
+                          </div>
+
+                          <div class="input-field col s12">
+                              <input id="book2" type="text" class="validate">
+                               <label for="book2">2) Title</label> 
+                          </div>
+
+                          <div class="input-field col s12">
+                              <input id="book3" type="text" class="validate">
+                               <label for="book3">3) Title</label> 
+                          </div>
+                      </div>
+
+                    <button class="btn waves-effect waves-light" type="submit" name="action" >Submit
+                            
+                    </button>
+
+            </div>  <!--closes container -->
+
+           
+
+                </div> <!--closes class=col-->
+                </div> <!--closes class=detail-panel -->
+
+
+           </div>      <!--closes class=row detail-panel -->
+
+        </div>  <!--close id=main-panel -->
+        </div>  <!--close class=col -->
+
+        </div>  <!--close class= row -->
+
+</div>  <!--id=main -->
+
+
+        <!--  Scripts-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+
+</body>
+</body>
+</html>
