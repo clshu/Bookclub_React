@@ -14,14 +14,16 @@ router.use(function timeLog (req, res, next) {
 router.get('/',function (req, res) {
 	
 		models.Member.findAll({
-			include: [{
-        				model: models.Event,
-        			    include: [{
-        						model: models.Book
-        						}]
+			// include: [{
+   //      				model: models.Event,
+   //      			    include: [{
+   //      						model: models.Book
+   //      						}]
          
-     				 }
-      			  ]
+   //   				 }
+   //    			  ],
+      		order: [
+            ['fname']]
 		})
 	
 	.then(function(results){

@@ -7,11 +7,19 @@ class BookDetail extends Component{
 
 render(){
 
+  var bookid;
+
+  if (this.props.book){
+    bookid=this.props.book.id;
+  }else{
+    bookid=0;
+  }
  
 return (
              	<div className="detail-panel"> 
                   
-                  {/*<RatingForm bookId={this.props.book.id} />*/}
+                  <RatingForm bookId={bookid} />
+
                     {/*<!--Avatar content of stacked posts -->*/}
                     <ul className="collection">
                     	{ this.props.book ? this.props.book.Ratings.map(e=>{
@@ -19,7 +27,7 @@ return (
                         let imglink;
                      
 
-                         if(e.Member.piclink){
+                         if(e.Member && e.Member.piclink){
 
                           imglink = "/img/"+  e.Member.piclink ;
                         

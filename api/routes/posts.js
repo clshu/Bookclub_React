@@ -18,7 +18,9 @@ router.get('/',function (req, res) {
         				model: models.Member
          
      				 }
-      			  ]
+      			  ],
+      	     order: [
+            ['postedon', 'DESC']]
 		})
 
 	.then(function(results){

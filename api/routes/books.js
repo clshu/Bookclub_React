@@ -21,11 +21,13 @@ router.get('/',function (req, res) {
         						attributes: ['id', 'fname', 'lname', 'piclink']
         					    } 
         						]
-
-         
      				 }
 
-      			  ]
+      			  ],
+      			 order: [
+            ['title'],
+            [models.Rating, 'ratedon', 'DESC']
+        	]
 		})
 	
 	.then(function(results){
@@ -36,40 +38,18 @@ router.get('/',function (req, res) {
 });
 
 
-// router.put('/edit',function (req, res) {
+router.post('/newrating',function (req, res) {
 
-// 		console.log(req.body);
+	console.log(req.body);
 	
-// 		models.Member.update({
-
-// 		fname: req.body.fname,
-// 		lname: req.body.lname,
-// 		address1: req.body.address1,
-// 		city: req.body.city,
-// 		state: req.body.state,
-// 		zip: req.body.zip,
-// 		mobile: req.body.mobile,
-// 		favebook1: req.body.favebook1,
-// 		favbook2: req.body.favbook2,
-// 		favbook3: req.body.favbook3,
-// 		aboutme: req.body.aboutme
-		
-// 		},
-
-// 		{where:{id:req.body.id}})
-      			  
+	models.Rating.create(req.body)
 	
-	
-// 	.then(function(results){
-		
-// 		return models.Member.findById(req.body.id);
-// 	})
-// 	.then(function(data){
-// 		console.log(data);	
-// 		res.json(data);
-// 	})
+	.then(function(data){
+		console.log(data);	
+		res.json(data);
+	})
   
-// });
+});
 
 
 
