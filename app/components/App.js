@@ -28,7 +28,7 @@ return (
      			<div className="main-panel">
         			<div className="container">
            				{/* <!--Main panel nav bar--> */}
-           				<NavMenu/>
+           				<NavMenu pathname={this.props.location.pathname} />
 
           				{ this.props.children }
 
