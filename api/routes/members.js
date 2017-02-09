@@ -14,14 +14,7 @@ router.use(function timeLog (req, res, next) {
 router.get('/',function (req, res) {
 	
 		models.Member.findAll({
-			// include: [{
-   //      				model: models.Event,
-   //      			    include: [{
-   //      						model: models.Book
-   //      						}]
-         
-   //   				 }
-   //    			  ],
+			
       		order: [
             ['fname']]
 		})
@@ -50,7 +43,8 @@ router.put('/edit',function (req, res) {
 		favebook1: req.body.favebook1,
 		favbook2: req.body.favbook2,
 		favbook3: req.body.favbook3,
-		aboutme: req.body.aboutme
+		aboutme: req.body.aboutme,
+		piclink: req.body.piclink
 		
 		},
 

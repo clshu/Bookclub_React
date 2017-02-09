@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { editMember } from '../actions/member_actions';
+import Dropzone from 'react-dropzone';
 import moment from 'moment';
+import request from 'superagent';
 
 class MemberForm extends Component{
 
@@ -11,27 +13,50 @@ constructor(props) {
 
 	this.handleChange = this.handleChange.bind(this);
 	this.handleSubmit = this.handleSubmit.bind(this);
+  this.dropHandler = this.dropHandler.bind(this);
+
 	this.state ={
 
-		fname: this.props.member.fname,
-		lname: this.props.member.lname,
-		address1: this.props.member.address1,
-		city: this.props.member.city,
-		state: this.props.member.state,
-		zip: this.props.member.zip,
-		mobile: this.props.member.mobile,
-		email: this.props.member.email,
-		favebook1: this.props.member.favebook1,
-		favbook2: this.props.member.favbook2,
-		favbook3: this.props.member.favbook3,
-		aboutme: this.props.member.aboutme,
-		jointdt: this.props.member.joindt
+		fname: this.props.member.fname || '',
+		lname: this.props.member.lname  || '',
+		address1: this.props.member.address1  || '',
+		city: this.props.member.city  || '',
+		state: this.props.member.state  || '',
+		zip: this.props.member.zip  || '',
+		mobile: this.props.member.mobile  || '',
+		email: this.props.member.email  || '',
+		favebook1: this.props.member.favebook1  || '',
+		favbook2: this.props.member.favbook2  || '',
+		favbook3: this.props.member.favbook3  || '',
+		aboutme: this.props.member.aboutme  || '',
+		jointdt: this.props.member.joindt  || '',
+    piclink: this.props.member.piclink || '',
+    files:[]
 
 	}
 	
 }
 
+componentWillReceiveProps(nextProps) {
 
+  this.setState({
+    fname: nextProps.member.fname || '',
+    lname: nextProps.member.lname  || '',
+    address1: nextProps.member.address1  || '',
+    city: nextProps.member.city  || '',
+    state: nextProps.member.state  || '',
+    zip: nextProps.member.zip  || '',
+    mobile: nextProps.member.mobile  || '',
+    email: nextProps.member.email  || '',
+    favebook1: nextProps.member.favebook1  || '',
+    favbook2: nextProps.member.favbook2  || '',
+    favbook3: nextProps.member.favbook3  || '',
+    aboutme: nextProps.member.aboutme  || '',
+    jointdt: nextProps.member.joindt  || '',
+    piclink: nextProps.member.piclink || '',
+  })
+  
+}
 
 handleChange(e){
 
@@ -43,6 +68,16 @@ handleChange(e){
 
 
 handleSubmit(e){
+
+  var piclink = "";
+
+
+
+  if(this.state.files.length){
+
+    console.log(this.state.files[0].name);
+   piclink = this.state.files[0].name;
+  }
 
 	this.props.editMember({
 
@@ -59,12 +94,33 @@ handleSubmit(e){
 		favbook3: this.state.favbook3,
 		aboutme: this.state.aboutme,
 		jointdt: this.state.joindt,
-		piclink: this.state.piclink
-
+		piclink: piclink
 
 	});
+
+  this.setState({files:[]});
 }
-	
+
+onOpenClick() {
+      this.refs.dropzone.open();
+}
+dropHandler(files) {
+  this.setState({
+    files: files,
+    piclink: files[0].name
+  });
+
+  var photo = new FormData();
+  photo.append('photo', files[0]);
+  console.log(files[0]);
+  request.post('/api/uploadfile')
+    .send(photo)
+    .end(function(err, resp) {
+      if (err) { console.error(err); }
+      return resp;
+    });
+}
+
 render(){
 
 	var  currentMember  = this.props.member;
@@ -88,10 +144,24 @@ render(){
 		   <div className="detail-panel">
                   <div className="row">
                       <div className="col sm3 m3 l3">
-                          <img src={ imglink } alt="" className="avatar" />
+                          {/*<img src={ imglink } alt="" className="avatar" />*/}
+
+                           {(this.state.files.length > 0) && !this.state.piclink ? <div>
+                          
+                          <div>{this.state.files.map((file) => <img className="card-image" src={`/img/${file.name}`} /> )}</div>
+                          </div> : null}
+
+                          { this.state.piclink ? <div><img className="card-image" src={`/img/${this.state.piclink}`} /></div>: null}
+
                       </div>
-                      <div className="col sm9 m9 l9">
-                        </div>
+                      { !this.state.files.length?<Dropzone disableClick ={false} multiple={false} accept={'image/*'} onDrop={this.dropHandler} >
+       					          <div> Drop/Click to add new photo. </div >
+      				        </Dropzone>:null}
+                      
+                                                
+                                               
+                      <div className="col sm6 m6 l6">
+                      </div>
                   </div>
                   
                   <div className="row">
@@ -144,7 +214,7 @@ function mapStateToProps(state){
   
     return {
 
-    	member: state.auth.profile
+    	member: state.members.find(e=> e.id === state.auth.profile.id)
       
     }
 
