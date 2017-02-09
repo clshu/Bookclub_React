@@ -19,7 +19,7 @@ const events = require('./api/routes/events');
 const members = require('./api/routes/members');
 const posts = require('./api/routes/posts');
 const books = require('./api/routes/books');
-
+const uploadfile = require('./api/routes/upload');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -50,6 +50,7 @@ app.use('/api/members',members);
 app.use('/api/events',events);
 app.use('/api/posts',posts);
 app.use('/api/books',books);
+app.use('/api/uploadfile',uploadfile);
 // feature is for test purpose only
 app.use('/feature', verifyToken, feature);
 //app.use('/events', verifyToken, events);
