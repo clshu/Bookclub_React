@@ -19,11 +19,13 @@ class EventDetail extends Component {
     }
   }
   render () {
-    console.log(this.props.event);
+    //console.log(this.props.event);
     let book = this.props.event.Book;
     let host = this.props.event.Member;
     let rsvps = this.props.event.Rsvps;
-    let date = dateFormat(new Date(this.props.event.dt), "mmmm dS, yyyy");
+    let dt = new Date(this.props.event.dt);
+    let date = dateFormat(dt, "mmmm dS");
+    let year = dateFormat(dt, "yyyy");
     let address = `${host.address1}, ${host.city}, ${host.state} ${host.zip}`;
     let imglink = "/img/unknown.png";
     if (host.piclink){
@@ -45,8 +47,9 @@ class EventDetail extends Component {
                 <div className="col sm3 m3 l3">
                     <img src={imglink} alt="" className="avatar"></img>
                 </div>
-                <div className="col sm9 m9 l9">
-                    <h5 className="center">{date}</h5>
+                <div className="col sm9 m9 l9 center">
+                    <h5>{date}</h5>
+                    <h5>{year}</h5>
                 </div>
             </div>
 
@@ -97,15 +100,16 @@ EventDetail.propTypes = {
 
 function mapStateToProps(state, ownProps){
 
-    console.log("ownProps params id =", ownProps.params.id);
-    // route: /app/events
-    if (!ownProps.params.id) return { event: state.currentEvent };
+    // route: /app/events, IndexRoute
+    // default current event
+    if (!ownProps.params.id) return { event: state.events.current };
     // route: /app/events/:id
-    let event = state.events.find(e => e.id == ownProps.params.id);
+    let event = state.events.all.find(e => e.id == ownProps.params.id);
     if (event){
       return { event: event };
     } else {
-      return { event: state.currentEvent };
+      // default current event
+      return { event: state.events.current };
     }
 }
 

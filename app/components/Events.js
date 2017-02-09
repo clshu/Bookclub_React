@@ -7,9 +7,9 @@ import dateFormat from 'dateformat';
 class Events extends Component{
 
   componentDidMount() {
-    console.log('this.props.events')
-    console.log(this.props.events)
+
     if (this.props.events.length == 0) {
+      console.log("Events: Reloading")
       this.props.getEvents();
     }
   }
@@ -38,8 +38,10 @@ class Events extends Component{
             <div className="choice-panel">
                   <ul className="collection">
                     <li className="collection-item avatar">
-                        <a href="#"><i className="material-icons circle teal">today</i>
-                        <span className="title">Create New Event</span></a>
+                      <Link to="/app/events/new">
+                        <i className="material-icons circle teal">today</i>
+                        <span className="title">Create New Event</span>
+                      </Link>
                     </li>
                     { list }
                   </ul>
@@ -61,7 +63,7 @@ Events.propTypes = {
 
 function mapStateToProps(state, ownProps){
     return {
-      events : state.events,
+      events : state.events.all,
     }
 }
 

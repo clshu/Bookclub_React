@@ -11,6 +11,7 @@ import App from '../components/App';
 import Main from '../components/Main';
 import Events from '../components/Events';
 import EventDetail from '../components/EventDetail';
+import EventNew from '../components/EventNew';
 import Members from '../components/Members';
 import MemberDetail from '../components/MemberDetail';
 import MemberForm from '../components/MemberForm';
@@ -58,10 +59,11 @@ const routes = (
     				<Route path="members" component={Members}>
                         <Route path="edit"  component={MemberForm} />
                         <Route path=":id"  component={MemberDetail} />
-                       
+
                         <IndexRoute component={MemberDetail} />
                     </Route>
-					<Route path="events" component={Events}>
+										<Route path="events" component={Events}>
+												<Route path="new"  component={EventNew} />
                         <Route path=":id"  component={EventDetail} />
                         <IndexRoute component={EventDetail} />
           	        </Route>

@@ -1,4 +1,4 @@
-// create all actions associated with activeSubreddit
+
 export function  setEvents(events){
 
 	return{
@@ -14,15 +14,31 @@ export function  setCurrentEvent(event){
 	}
 }
 
+export function  setEventMessage(message){
+
+	return{
+		type: 'SET_EVENT_MESSAGE',
+		message
+	}
+}
+
+export function  addEvent(newEvent){
+
+	return{
+		type: 'ADD_EVENT',
+		newEvent
+	}
+}
+
 export function getEvents(){
 
-	return (despatch) => {
+	return (dispatch) => {
 
 	fetch('/api/events')
 		.then(res=>res.json())
 		.then(data=>{
 			//console.log(data);
-			despatch(setEvents(data))
+			dispatch(setEvents(data))
 		});
 	}
 }
@@ -35,14 +51,48 @@ export function getCurrentEvent(){
 	let month = today.getMonth() + 1;
 	let currentMonth = year.toString() + '-' + month.toString();
 
-	return (despatch) => {
+	return (dispatch) => {
+		fetch('/api/events/' + currentMonth)
+			.then(res=>res.json())
+			.then(data=>{
 
-	fetch('/api/events/' + currentMonth)
-		.then(res=>res.json())
-		.then(data=>{
-
-			console.log(data);
-			despatch(setCurrentEvent(data))
-		});
+				//console.log(data);
+				dispatch(setCurrentEvent(data));
+			}).
+			catch(err => {
+				throw err;
+			});
 	}
+}
+
+export function addNewEvent (event) {
+return (dispatch, getState) => {
+	fetch('/api/events/new',
+	{
+		  method: "POST",
+		  body: JSON.stringify(event),
+		  headers: {
+				"authorization": localStorage.getItem('bcjwt'),
+		    "Content-Type": "application/json"
+		  },
+		  	credentials: "same-origin"
+    	})
+			.then(data=>data.json())
+			.then(data=>{
+				if (data.error) {
+						dispatch(setEventMessage(data.error));
+				} else {
+						//console.log('newEvent')
+						//console.log(data)
+						let newEvent = data;
+						// data has Event and Book info only
+						// add Member and Rsvps
+						// New Event is added by cuurent login member
+						newEvent.Member = Object.assign({}, getState().auth.profile);
+						newEvent.Rsvps = [];
+						dispatch(addEvent(newEvent));
+				}
+
+			});
+		}
 }
