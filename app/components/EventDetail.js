@@ -5,6 +5,15 @@ import dateFormat from 'dateformat';
 class EventDetail extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      rsvp: "3" // YES
+    }
+    this.handleRSVP = this.handleRSVP.bind(this);
+  }
+  handleRSVP (e) {
+    this.setState(
+      { rsvp: e.target.value }
+    )
   }
   mapNumberToResponse(number) {
     switch(number) {
@@ -69,16 +78,30 @@ class EventDetail extends Component {
 
                     <ul className="collection">
                         <li className="collection-item avatar">
-                            <i className="material-icons circle teal">done</i>
+
+
                             <span className="title">Are you going?</span>
-                            <div className="rsvp-response">
-                              <input name="rsvp" type="radio" id="rsvp-yes" />
+                            <form className="rsvp-response">
+                              <input name="rsvp" type="radio" id="rsvp-yes"
+                                value="3"
+                                checked={this.state.rsvp === "3"}
+                                onChange={this.handleRSVP}
+                              />
                               <label htmlFor="rsvp-yes">YES</label>
-                              <input name="rsvp" type="radio" id="rsvp-no" />
+                              <input name="rsvp" type="radio" id="rsvp-no"
+                                value="1"
+                                checked={this.state.rsvp === "1"}
+                                onChange={this.handleRSVP}
+                              />
                               <label htmlFor="rsvp-no">NO</label>
-                              <input name="rsvp" type="radio" id="rsvp-maybe" />
+                              <input name="rsvp" type="radio" id="rsvp-maybe"
+                                value="2"
+                                checked={this.state.rsvp === "2"}
+                                onChange={this.handleRSVP}
+                              />
                               <label htmlFor="rsvp-maybe">MAYBE</label>
-                            </div>
+                            </form>
+
                         </li>
 
                         {rsvpList}
