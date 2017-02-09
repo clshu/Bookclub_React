@@ -92,7 +92,7 @@ SidePanel.propTypes = {
 
 function mapStateToProps(state){
     return {
-      currentEvent : state.currentEvent
+      currentEvent : state.events.current
     }
 }
 
