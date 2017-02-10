@@ -39,7 +39,8 @@ module.exports = {
                                   favbook3:row[10],
                                   aboutme:row[11],
                                   piclink:row[12],
-                                  password:row[13]
+                                  password:row[13],
+                                  joindt:row[14]
                                   
                                 })
                                 return members;

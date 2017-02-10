@@ -82,7 +82,7 @@ class Signup extends Component {
         email: this.state.signupEmail,
         password: this.state.signupPassword,
 
-	    fname: this.state.fname,
+	  fname: this.state.fname,
 		lname: this.state.lname,
 		address1: this.state.address1,
 		city: this.state.city,
@@ -93,7 +93,7 @@ class Signup extends Component {
 		favbook2: this.state.favbook2,
 		favbook3: this.state.favbook3,
 		aboutme: this.state.aboutme,
-		jointdt: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
+		joindt: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
 		piclink:piclink
 		
       
