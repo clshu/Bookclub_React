@@ -46,7 +46,7 @@
     "redux-devtools-extension": "^1.0.0",
     "redux-thunk": "^2.2.0",
     "sequelize": "3.30.2",
-    "sequelize-cli": "^2.5.1",
+    "sequelize-cli": "2.4.0",
     "superagent": "^3.4.1"
   },
   "devDependencies": {
