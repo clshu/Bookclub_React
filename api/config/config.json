@@ -19,4 +19,5 @@
     "database": "fmy6xpo4zacyictg",
     "host": "alv4v3hlsipxnujn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
+  }
 }
