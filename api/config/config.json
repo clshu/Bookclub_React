@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "vidya999",
+    "password": "yes",
     "database": "bookclub",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -14,10 +14,6 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "euxn403kuhweeq5g",
-    "password": "hh8pcflyzwzjitr4",
-    "database": "ztll2t0otpuwnqab",
-    "host": "alv4v3hlsipxnujn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql"
+    "config.use_env_variable": "JAWSDB_URL"
   }
 }
