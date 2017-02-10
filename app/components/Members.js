@@ -26,12 +26,17 @@ return (
             <div className="col sm12 m5 lg5">
             <div className="choice-panel">
                   <ul className="collection">
-                      <Link to="/app/members/edit" >
+                      {/edit/.test(this.props.pathname)?<Link to="/app/members/edit" >
+                      <li className="collection-item avatar teal white-text">
+                          <i className="material-icons circle teal">mode_edit</i>
+                          <span className="title">Edit my profile</span>
+                      </li>
+                       </Link>:<Link to="/app/members/edit" >
                       <li className="collection-item avatar">
                           <i className="material-icons circle teal">mode_edit</i>
                           <span className="title">Edit my profile</span>
                       </li>
-                       </Link>
+                       </Link>}
 
 
                       { this.props.members.map((e,i)=>{
@@ -50,7 +55,7 @@ return (
                         }
 
                     
-                    if ((this.props.params.id && (this.props.params.id == e.id)) || ( i=== 0 && !this.props.params.id)){
+                    if ((this.props.params.id && (this.props.params.id == e.id)) || ( i === 0 && !this.props.params.id && !/edit/.test(this.props.pathname))){
 
                      
                        return (
@@ -112,11 +117,12 @@ Members.propTypes = {
  
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state,ownProps){
 
   
     return {
-      members : state.members
+      members : state.members,
+      pathname: ownProps.location.pathname
     }
 
  
