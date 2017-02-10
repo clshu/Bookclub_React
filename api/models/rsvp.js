@@ -3,7 +3,7 @@
 module.exports = function(sequelize, DataTypes) {
   var Rsvp = sequelize.define('Rsvp', {
     response: { type: DataTypes.INTEGER, defaultValue: 0},
-    rsvpon: { type: DataTypes.DATE, default: Date.now() }
+    rsvpon: { type: DataTypes.DATE, defaultValue: sequelize.NOW }
   }, {
     classMethods: {
       associate: function(models) {

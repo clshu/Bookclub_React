@@ -1,37 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import dateFormat from 'dateformat';
+import { getRsvps, addNewRsvp } from '../actions/rsvp_actions';
+import Rsvp from './Rsvp';
 
 class EventDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rsvp: "3" // YES
+      rsvp: "3" // default: YES
     }
     this.handleRSVP = this.handleRSVP.bind(this);
+    this.handleAddRSVP = this.handleAddRSVP.bind(this);
   }
   handleRSVP (e) {
     this.setState(
       { rsvp: e.target.value }
     )
   }
-  mapNumberToResponse(number) {
-    switch(number) {
-      case 3:
-        return 'Yes';
-      case 2:
-        return 'Maybe';
-      case 1:
-        return 'No';
-      default:
-        return 'undefined';
-    }
+  handleAddRSVP() {
+    this.props.addNewRsvp(this.props.event.id, this.state.rsvp);
+  }
+  componentDidMount () {
+    this.props.getRsvps(this.props.event.id);
+  }
+  componentDidUpdate () {
+    this.props.getRsvps(this.props.event.id);
   }
   render () {
     //console.log(this.props.event);
     let book = this.props.event.Book;
     let host = this.props.event.Member;
-    let rsvps = this.props.event.Rsvps;
+    //let rsvps = this.props.event.Rsvps;
     let dt = new Date(this.props.event.dt);
     let date = dateFormat(dt, "mmmm dS");
     let year = dateFormat(dt, "yyyy");
@@ -41,15 +41,6 @@ class EventDetail extends Component {
        imglink = `/img/${host.piclink}`;
     }
 
-    let rsvpList = rsvps.map((rsvp) => {
-      return (
-        <li className="collection-item avatar" key={rsvp.Member.id}>
-            <img src={`/img/${rsvp.Member.piclink}`} alt="" className="circle" />
-            <span className="title">{rsvp.Member.fname} {rsvp.Member.lname}</span>
-            <p>Replied: {this.mapNumberToResponse(rsvp.response)}</p>
-        </li>
-      )
-    })
     return (
       <div className="detail-panel">
             <div className="row">
@@ -79,7 +70,7 @@ class EventDetail extends Component {
                     <ul className="collection">
                         <li className="collection-item avatar">
 
-
+                            <i className="material-icons waves-effect waves-light circle teal" onClick={this.handleAddRSVP}>done</i>
                             <span className="title">Are you going?</span>
                             <form className="rsvp-response">
                               <input name="rsvp" type="radio" id="rsvp-yes"
@@ -104,7 +95,7 @@ class EventDetail extends Component {
 
                         </li>
 
-                        {rsvpList}
+                        <Rsvp />
                      </ul>
 
 
@@ -136,4 +127,4 @@ function mapStateToProps(state, ownProps){
     }
 }
 
-export default connect(mapStateToProps,{})(EventDetail);
+export default connect(mapStateToProps,{ getRsvps, addNewRsvp })(EventDetail);

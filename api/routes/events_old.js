@@ -22,10 +22,15 @@ router.get('/', function(req, res) {
 
             }, {
                 model: models.Book
+            }, {
+                model: models.Rsvp,
+                include: [ {model: models.Member, attributes: ['id', 'fname', 'lname', 'piclink']} ]
+
             }
         ],
         order: [
             ['dt', 'DESC'],
+            [models.Rsvp, 'response', 'DESC']
         ],
         limit: 10
 
@@ -49,6 +54,9 @@ router.get('/:yearMonth', function(req, res) {
                 attributes: { exclude: ['password']}
             }, {
                 model: models.Book
+            }, {
+                model: models.Rsvp,
+                include: [ {model: models.Member, attributes: ['id', 'fname', 'lname', 'piclink']} ]
             }
         ],
         where: {
@@ -56,8 +64,10 @@ router.get('/:yearMonth', function(req, res) {
                 Sequelize.where(Sequelize.fn('YEAR', Sequelize.col('dt')), year),
                 Sequelize.where(Sequelize.fn('MONTH', Sequelize.col('dt')), month)
             ]
-        }
-
+        },
+        order: [
+            [models.Rsvp, 'response', 'DESC']
+        ]
     }).then(function(results) {
         //console.log(results);
         res.json(results);
@@ -112,6 +122,80 @@ router.post('/new', function(req, res) {
   })
   .catch(err => { throw err });
 
+})
+
+// POST /api/events/rsvp
+router.post('/rsvp', function(req, res) {
+  let rsvp = req.body;
+  return models.Rsvp.findOrCreate({
+      where: {
+        $and: [
+            { EventId: rsvp.EventId },
+            { MemberId: rsvp.MemberId }
+        ]
+      },
+      defaults: {
+        response: rsvp.response,
+        EventId: rsvp.EventId,
+        MemberId: rsvp.MemberId,
+        rsvpon: Date.now()
+      }
+    })
+    .spread((data, created) => {
+      console.log(data.get({
+        plain: true
+      }))
+      console.log(created)
+      if (created) {
+        return models.Rsvp.findById(data.id,
+          {
+            include: [ {model: models.Member, attributes: ['id', 'fname', 'lname', 'piclink']} ]
+          }
+        )
+        .then(newRsvp => {
+          res.json(newRsvp);
+        })
+        .catch(err => {
+          throw err;
+        })
+      } else {
+        return models.Rsvp.update(
+          {
+            response: rsvp.response,
+            rsvpon: Date.now()
+           },
+          {
+            where: { id: data.id }
+          }
+        )
+        .then ((updatedRsvp) => {
+
+          return models.Rsvp.findById(data.id,
+            {
+              include: [ {model: models.Member, attributes: ['id', 'fname', 'lname', 'piclink']} ]
+            }
+          )
+          .then(newRsvp => {
+            res.json(newRsvp);
+          })
+          .catch(err => {
+            throw err;
+          })
+        })
+
+        .catch(err => {
+          throw err;
+        })
+      }
+
+    })
+    .catch(err => {
+      throw err;
+    })
+
+
+
+  res.json(req.body);
 })
 
 module.exports = router;

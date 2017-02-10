@@ -9,7 +9,6 @@ class Events extends Component{
   componentDidMount() {
 
     if (this.props.events.length == 0) {
-      console.log("Events: Reloading")
       this.props.getEvents();
     }
   }

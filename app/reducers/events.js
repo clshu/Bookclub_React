@@ -1,3 +1,5 @@
+export const EVENT_LIST_MAX_LEGNTH = 10;
+
 const initialEvent = {
 	all: [], // all events
 	current: null, // current event, this month event

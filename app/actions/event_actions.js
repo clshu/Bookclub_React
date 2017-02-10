@@ -86,10 +86,10 @@ return (dispatch, getState) => {
 						//console.log(data)
 						let newEvent = data;
 						// data has Event and Book info only
-						// add Member and Rsvps
+						// add Member
 						// New Event is added by cuurent login member
 						newEvent.Member = Object.assign({}, getState().auth.profile);
-						newEvent.Rsvps = [];
+
 						dispatch(addEvent(newEvent));
 				}
 
