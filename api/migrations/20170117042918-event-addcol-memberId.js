@@ -10,11 +10,11 @@ module.exports = {
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
 
-     return queryInterface.addColumn('events',
+     return queryInterface.addColumn('Events',
       'memberId',
       {
         type: Sequelize.INTEGER
-      
+
       })
 
       },
@@ -28,7 +28,7 @@ module.exports = {
       return queryInterface.dropTable('users');
 
     */
-    return queryInterface.removeColumn('events',
+    return queryInterface.removeColumn('Events',
       'memberId');
   }
 };
