@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 
 class MemberDetail extends Component{
@@ -39,7 +40,7 @@ render(){
                   <div className="row">
                 
                         <div className="container">
-                          <p>Member since: { currentMember.joindt }</p>
+                          <p>Member since: { currentMember.joindt ? moment(new Date(currentMember.joindt )).format('ll'): null }</p>
                           <p>{ currentMember.address1 }, { currentMember.city }, { currentMember.state }  { currentMember.zip }</p>
                           <p>m. { currentMember.mobile }</p>
                           <br />
