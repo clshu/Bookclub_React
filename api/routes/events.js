@@ -3,6 +3,7 @@ var models = require('../models');
 var sequelizeConnection = models.sequelize;
 var Sequelize = models.Sequelize;
 
+
 // middleware that is specific to this router - logs time of request
 router.use(function timeLog(req, res, next) {
     console.log('Time: ', Date.now())
@@ -30,7 +31,8 @@ router.get('/', function(req, res) {
         order: [
             ['dt', 'DESC'],
             [models.Rsvp, 'response', 'DESC']
-        ]
+        ],
+        limit: 10
 
     }).then(function(results) {
         //console.log(results);
@@ -120,6 +122,80 @@ router.post('/new', function(req, res) {
   })
   .catch(err => { throw err });
 
+})
+
+// POST /api/events/rsvp
+router.post('/rsvp', function(req, res) {
+  let rsvp = req.body;
+  return models.Rsvp.findOrCreate({
+      where: {
+        $and: [
+            { EventId: rsvp.EventId },
+            { MemberId: rsvp.MemberId }
+        ]
+      },
+      defaults: {
+        response: rsvp.response,
+        EventId: rsvp.EventId,
+        MemberId: rsvp.MemberId,
+        rsvpon: Date.now()
+      }
+    })
+    .spread((data, created) => {
+      console.log(data.get({
+        plain: true
+      }))
+      console.log(created)
+      if (created) {
+        return models.Rsvp.findById(data.id,
+          {
+            include: [ {model: models.Member, attributes: ['id', 'fname', 'lname', 'piclink']} ]
+          }
+        )
+        .then(newRsvp => {
+          res.json(newRsvp);
+        })
+        .catch(err => {
+          throw err;
+        })
+      } else {
+        return models.Rsvp.update(
+          {
+            response: rsvp.response,
+            rsvpon: Date.now()
+           },
+          {
+            where: { id: data.id }
+          }
+        )
+        .then ((updatedRsvp) => {
+
+          return models.Rsvp.findById(data.id,
+            {
+              include: [ {model: models.Member, attributes: ['id', 'fname', 'lname', 'piclink']} ]
+            }
+          )
+          .then(newRsvp => {
+            res.json(newRsvp);
+          })
+          .catch(err => {
+            throw err;
+          })
+        })
+
+        .catch(err => {
+          throw err;
+        })
+      }
+
+    })
+    .catch(err => {
+      throw err;
+    })
+
+
+
+  res.json(req.body);
 })
 
 module.exports = router;
