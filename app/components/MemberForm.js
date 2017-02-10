@@ -126,9 +126,6 @@ render(){
 	var  currentMember  = this.props.member;
 
     let imglink;
-
-
-
      
 
   if(currentMember.piclink){

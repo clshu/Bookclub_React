@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { despatchAuthSignup } from '../actions/auth_actions';
 import { Link } from 'react-router';
+import Dropzone from 'react-dropzone';
 import moment from 'moment';
 
 // create the component
@@ -15,8 +16,6 @@ class Signup extends Component {
 	  super(props);
 
 	  this.state = {
-
-
 
 	   signupEmail: "",
 	   signupPassword : "",
@@ -35,11 +34,13 @@ class Signup extends Component {
 		favbook3: null,
 		aboutme: null,
 		jointdt: null,
-		piclink: null
+		piclink: null,
+		files:[]
     };
 
     this.handleSignup = this.handleSignup.bind(this);
     this.handleChange=this.handleChange.bind(this);
+    this.dropHandler = this.dropHandler.bind(this);
 
 	}
 
@@ -63,6 +64,17 @@ class Signup extends Component {
 
     handleSignup(e){
 
+
+    var piclink = "";
+
+
+
+  if(this.state.files.length){
+
+    console.log(this.state.files[0].name);
+   piclink = this.state.files[0].name;
+  }
+
     if(this.state.signupEmail && this.state.signupPassword){
 
     var member = {
@@ -81,7 +93,8 @@ class Signup extends Component {
 		favbook2: this.state.favbook2,
 		favbook3: this.state.favbook3,
 		aboutme: this.state.aboutme,
-		jointdt: moment(new Date()).format("YYYY-MM-DD HH:mm:ss")
+		jointdt: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
+		piclink:piclink
 		
       
     };
@@ -98,6 +111,26 @@ class Signup extends Component {
     
   }
 
+
+onOpenClick() {
+      this.refs.dropzone.open();
+}
+dropHandler(files) {
+  this.setState({
+    files: files,
+    piclink: files[0].name
+  });
+
+  var photo = new FormData();
+  photo.append('photo', files[0]);
+  console.log(files[0]);
+  request.post('/api/uploadfile')
+    .send(photo)
+    .end(function(err, resp) {
+      if (err) { console.error(err); }
+      return resp;
+    });
+}
 	// return html to be rendered
 	render() {
 
@@ -122,9 +155,26 @@ class Signup extends Component {
 						</div>
 
 						
-						<div className="row"><input className="cursiveFont col s8 offset-s2" type="text" name= "fname" value={ this.state.fname } onChange={ this.handleChange} placeholder="First Name" /></div> 
+					   <div className="row"><input className="cursiveFont col s8 offset-s2" type="text" name= "fname" value={ this.state.fname } onChange={ this.handleChange} placeholder="First Name" /></div> 
                        <div className="row"><input className="cursiveFont col s8 offset-s2"  type="text" name= "lname" value={ this.state.lname } onChange={ this.handleChange} placeholder="Last Name" /> </div>
                   
+
+                  	   <div className="row center">
+                  	      {(this.state.files.length > 0) && !this.state.piclink ? <div className="center">
+                          
+                          <div className="center">{this.state.files.map((file) => <img  src={`/img/${file.name}`} /> )}</div>
+                          </div> : null}
+
+                          { this.state.piclink ? <div className="center"><img src={`/img/${this.state.piclink}`} /></div>: null}
+
+                      </div>
+                      { !this.state.files.length?
+
+                      	   <div className="center"><Dropzone className="center" disableClick ={false} multiple={false} accept={'image/*'} onDrop={this.dropHandler} >
+       					          <div className="center"> Click to add profile picture. </div >
+      				        </Dropzone></div>:null}
+
+      				   
                        <div className="row"><input className="cursiveFont col s8 offset-s2" type="text" name= "address1" value={ this.state.address1 } onChange={ this.handleChange} placeholder="Address" /></div> 
                        <div className="row"><input className="cursiveFont col s8 offset-s2" type="text" name= "city" value={ this.state.city } onChange={ this.handleChange} placeholder="city" /></div> 
                        <div className="row"><input className="cursiveFont col s8 offset-s2" type="text" name= "state" value={ this.state.state } onChange={ this.handleChange} placeholder="state" /></div>
@@ -156,9 +206,9 @@ class Signup extends Component {
 					<div className="row center"><Link to="/login">Already a member? Login</Link></div>
 
 				</div>
+				</div>
 
-
-			</div>
+		
 
 
 		);
