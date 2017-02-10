@@ -64,7 +64,8 @@ router.post('/signup', function(req, res, next) {
 				favbook2: req.body.favbook2,
 				favbook3: req.body.favbook3,
 				aboutme: req.body.aboutme,
-				jointdt: req.body.joindt
+				joindt: req.body.joindt,
+				piclink: req.body.piclink
 		
 			})
 			.then(function(member) {

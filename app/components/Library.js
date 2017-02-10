@@ -27,14 +27,30 @@ return (
                       
 
 
-                      { this.props.books.map(e=>{
+                      { this.props.books.map((e,i)=>{
 
                        
                         let detailLink ="/app/library/"+e.id;
 
                        
 
+                    if ((this.props.params.id && (this.props.params.id == e.id)) || ( i=== 0 && !this.props.params.id)){
+
+                     
+                      
                      return (
+
+                       <Link to={ detailLink } key={e.id}>
+                         <li className="collection-item avatar teal white-text">
+                            <i className="material-icons circle teal">library_books</i>
+                            <span className="title">{ e.title.toUpperCase() }</span>
+                        </li>
+                      </Link>
+
+                      );
+                   }else{
+
+                    return (
 
                        <Link to={ detailLink } key={e.id}>
                          <li className="collection-item avatar">
@@ -45,7 +61,12 @@ return (
 
                       );
 
-                     })
+
+                   }
+                     
+
+                     },this)
+                   
                   }
                  
                      

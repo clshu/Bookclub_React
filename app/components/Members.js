@@ -15,6 +15,8 @@ componentDidMount() {
 	
 render(){
 
+
+
 return (
 
 
@@ -24,15 +26,20 @@ return (
             <div className="col sm12 m5 lg5">
             <div className="choice-panel">
                   <ul className="collection">
-                      <Link to="/app/members/edit" >
+                      {/edit/.test(this.props.pathname)?<Link to="/app/members/edit" >
+                      <li className="collection-item avatar teal white-text">
+                          <i className="material-icons circle teal">mode_edit</i>
+                          <span className="title">Edit my profile</span>
+                      </li>
+                       </Link>:<Link to="/app/members/edit" >
                       <li className="collection-item avatar">
                           <i className="material-icons circle teal">mode_edit</i>
                           <span className="title">Edit my profile</span>
                       </li>
-                       </Link>
+                       </Link>}
 
 
-                      { this.props.members.map(e=>{
+                      { this.props.members.map((e,i)=>{
 
                         let imglink;
                         let detailLink ="/app/members/"+e.id;
@@ -47,7 +54,24 @@ return (
 
                         }
 
-                     return (
+                    
+                    if ((this.props.params.id && (this.props.params.id == e.id)) || ( i === 0 && !this.props.params.id && !/edit/.test(this.props.pathname))){
+
+                     
+                       return (
+
+                       <Link to={ detailLink } key={e.id}>
+                         <li className="collection-item avatar teal white-text">
+                            <img src={ imglink } alt="" className="circle" />
+                            <span className="title">{ e.fname} {e.lname}</span>
+                        </li>
+                      </Link>
+
+                      );
+
+                    }else{
+
+                       return (
 
                        <Link to={ detailLink } key={e.id}>
                          <li className="collection-item avatar">
@@ -57,8 +81,11 @@ return (
                       </Link>
 
                       );
+                      
+                    }
+                    
 
-                     })
+                     },this)
                   }
                  
                      
@@ -90,11 +117,12 @@ Members.propTypes = {
  
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state,ownProps){
 
   
     return {
-      members : state.members
+      members : state.members,
+      pathname: ownProps.location.pathname
     }
 
  

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import RatingForm from './RatingForm';
+import moment from 'moment';
 
 class BookDetail extends Component{
 
@@ -42,7 +43,7 @@ return (
                       <li className="collection-item avatar" key={e.id}>
                             <img src={imglink} alt="" className="circle" />
                             <span className="title">{ e.Member.fname} {e.Member.lname}</span>
-                            <p>{e.ratedon}</p>
+                            <p>{moment(new Date(e.ratedon)).format('lll')}</p>
                             <p>{ e.comment}<br />{ e.stars} Stars</p>
                        </li>
 

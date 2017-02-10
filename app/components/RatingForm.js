@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { saveRating } from '../actions/book_actions';
@@ -89,7 +90,7 @@ render(){
     			</div>
     			<br/>
     			<div className="row">
-    				<button className="btn center col s2 offset-s5" name="action" onClick ={ this.handleSubmit }>Submit</button><br/>
+    				<button className="btn center col s3 offset-s5" name="action" onClick ={ this.handleSubmit }>Submit</button><br/>
             	</div>
             </div> </div>
 

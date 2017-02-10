@@ -42,7 +42,7 @@ return (despatch) => {
 		fetch('/api/posts/new', 
 		{   
 		  method: "POST",
-		  body: JSON.stringify(user),
+		  body: JSON.stringify(post),
 		  headers: {
 		    "Content-Type": "application/json"
 		  },

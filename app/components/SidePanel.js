@@ -9,15 +9,15 @@ class SidePanel extends Component{
 	constructor	(props) {
 		super(props);
 		this.handleRSVP = this.handleRSVP.bind(this);
-		this.handleRateIt = this.handleRateIt.bind(this);
+    this.handleRateIt = this.handleRateIt.bind(this);
 	}
 
 	handleRateIt ()  {
-
+    browserHistory.push('app/library/'+this.props.currentEvent.Book.id);
 	}
 
 	handleRSVP () {
-		browserHistory.push('app/events');
+		browserHistory.push('app/events/'+this.props.currentEvent.id);
 	}
 
 	componentDidMount() {
@@ -56,7 +56,7 @@ class SidePanel extends Component{
               <h6>AUTHOR:</h6>
               <h4>{book.author}</h4>
               <br/>
-              <a href="#" className="waves-effect waves-light center btn">Rate It!</a>
+              <a href="#" className="waves-effect waves-light center btn" onClick={this.handleRateIt}>Rate It!</a>
             </section><br/>
 
             <section id="hostInfo">

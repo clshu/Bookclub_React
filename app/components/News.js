@@ -1,8 +1,10 @@
-
+//get all dependencies
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getPosts } from '../actions/post_actions';
 import NewPostForm from './NewPostForm';
+import moment from 'moment';
+
 
 class News extends Component{
 
@@ -44,7 +46,7 @@ return (
                    <li className = "collection-item avatar" key={e.id}>
                       <img src={ imglink } alt="" className="circle"/>
                       <span className="title">{ e.Member.fname } { e.Member.lname }</span>
-                      <p>{e.postedon}</p>
+                      <p>{moment(new Date(e.postedon)).format('lll')}</p>
                       <p>{ e.content }</p>
                     </li>
                   );

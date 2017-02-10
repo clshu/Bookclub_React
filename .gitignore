@@ -2,3 +2,5 @@
 node_modules
 npm-debug.log
 .babelrc
+config.json
+bundle.js
