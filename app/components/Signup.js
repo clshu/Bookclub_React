@@ -5,11 +5,11 @@ import { browserHistory } from 'react-router';
 import { despatchAuthSignup } from '../actions/auth_actions';
 import { Link } from 'react-router';
 import Dropzone from 'react-dropzone';
+import request from 'superagent';
 import moment from 'moment';
 
 // create the component
 class Signup extends Component {
-
 
 
  constructor(props) {
@@ -24,17 +24,17 @@ class Signup extends Component {
 
 	    fname: "",
 		lname: "",
-		address1: null,
-		city: null,
-		state: null,
-		zip: null,
-		mobile: null,
-		favebook1: null,
-		favbook2: null,
-		favbook3: null,
-		aboutme: null,
-		jointdt: null,
-		piclink: null,
+		address1: "",
+		city: "",
+		state: "",
+		zip: "",
+		mobile: "",
+		favebook1: "",
+		favbook2: "",
+		favbook3: "",
+		aboutme: "",
+		jointdt: "",
+		piclink: "",
 		files:[]
     };
 
