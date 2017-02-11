@@ -57,7 +57,7 @@ class Events extends Component{
                     {/new/.test(this.props.pathname)?<li className="collection-item avatar teal white-text">
                       <Link to="/app/events/new">
                         <i className="material-icons circle teal white-text">today</i>
-                        <span className="title">Create New Event</span>
+                        <span className="title white-text">Create New Event</span>
                       </Link>
                     </li>:<li className="collection-item avatar">
                       <Link to="/app/events/new">
