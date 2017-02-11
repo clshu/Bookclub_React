@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import { Link } from 'react-router';
 
 class Header extends Component{
 
@@ -22,6 +23,8 @@ return (
                                     <i className="material-icons right">menu</i></a>
 
                   </li>*/}
+                  <li><a href="/bookclub.html"><button className="btn flat" >Sign out</button></a></li>
+
               </ul>
         </div>
     </nav>
