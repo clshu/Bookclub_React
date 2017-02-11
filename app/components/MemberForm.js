@@ -69,15 +69,15 @@ handleChange(e){
 
 handleSubmit(e){
 
-  var piclink = "";
+  // var piclink = "";
 
 
 
-  if(this.state.files.length){
+  // if(this.state.files.length){
 
-    console.log(this.state.files[0].name);
-   piclink = this.state.files[0].name;
-  }
+  //   console.log(this.state.files[0].name);
+  //  piclink = this.state.files[0].name;
+  // }
 
 	this.props.editMember({
 
@@ -94,7 +94,7 @@ handleSubmit(e){
 		favbook3: this.state.favbook3,
 		aboutme: this.state.aboutme,
 		jointdt: this.state.joindt,
-		piclink: piclink
+		piclink: this.state.piclink
 
 	});
 
