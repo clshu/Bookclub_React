@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "vidya999",
+    "password": "yes",
     "database": "bookclub",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "lid4xj4ij2deoa9t",
+    "password": "a9u4lxr0i2978l3s",
+    "database": "fmy6xpo4zacyictg",
+    "host": "alv4v3hlsipxnujn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
