@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
+import { browserHistory, Link} from 'react-router';
 import { connect } from 'react-redux';
 import dateFormat from 'dateformat';
 import { getCurrentEvent } from '../actions/event_actions';
 
 
+
 class SidePanel extends Component{
 	constructor	(props) {
 		super(props);
-		this.handleRSVP = this.handleRSVP.bind(this);
-    this.handleRateIt = this.handleRateIt.bind(this);
+		//this.handleRSVP = this.handleRSVP.bind(this);
+    //this.handleRateIt = this.handleRateIt.bind(this);
 	}
 
-	handleRateIt ()  {
-    browserHistory.push('app/library/'+this.props.currentEvent.Book.id);
-	}
+	// handleRateIt ()  {
+ //    browserHistory.replace('app/library/'+this.props.currentEvent.Book.id);
+	// }
 
-	handleRSVP () {
-		browserHistory.push('app/events/'+this.props.currentEvent.id);
-	}
+	// handleRSVP () {
+	// 	browserHistory.replace('app/events/'+this.props.currentEvent.id);
+	// }
 
 	componentDidMount() {
 		if (!this.props.currentEvent) {
@@ -27,6 +28,13 @@ class SidePanel extends Component{
 	}
 
 	render() {
+    if (!this.props.currentEvent) {
+      return <div></div>
+    }
+    
+    var ratelink = '/app/library/'+this.props.currentEvent.Book.id;
+    var rsvplink =  '/app/events/'+this.props.currentEvent.id;
+
 		if (!this.props.currentEvent) return (<div></div>);
 
 		let eventTime = new Date(this.props.currentEvent.dt);
@@ -56,7 +64,7 @@ class SidePanel extends Component{
               <h6>AUTHOR:</h6>
               <h4>{book.author}</h4>
               <br/>
-              <a href="#" className="waves-effect waves-light center btn" onClick={this.handleRateIt}>Rate It!</a>
+              <Link to={ratelink}><button className="waves-effect waves-light btn" >Rate It!</button></Link>
             </section><br/>
 
             <section id="hostInfo">
@@ -73,7 +81,7 @@ class SidePanel extends Component{
                   </div>
               </div>
               <br/>
-              <button className="waves-effect waves-light btn" onClick={this.handleRSVP}>RSVP!</button>
+               <Link to={rsvplink}><button className="waves-effect waves-light btn" >RSVP!</button></Link>
             </section>
       </div>
        {/*<!--closes id side-panel-->*/}
