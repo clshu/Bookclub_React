@@ -15,8 +15,8 @@ class Login extends Component {
 
 	  this.state = {
 
-	    loginEmail: "bhagya@bhagya.com",
-	    loginPassword : "bhagya",
+	    loginEmail: "",
+	    loginPassword : "",
 	    loginMessage:this.props.loginMessage
 
 
