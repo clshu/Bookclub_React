@@ -1,4 +1,4 @@
-// create all actions associated with activeSubreddit
+import { request_content } from './utils';
 
 export function  setMembers(members){
 
@@ -19,10 +19,10 @@ export function  updateMember(member){
 
 export function getMembers(){
 
-	
+
 	return (despatch) => {
 
-	fetch('/api/members')
+	fetch('/api/members', request_content("GET"))
 		.then(res=>res.json())
 		.then(data=>{
 			console.log(data);
@@ -38,26 +38,19 @@ export function editMember(member){
 	// return (despatch) => {
 	return (despatch) => {
 	fetch('/api/members/edit?_method=PUT',
-	{   
-		  method: "POST",
-		  body: JSON.stringify(member),
-		  headers: {
-		    "Content-Type": "application/json"
-		  },
-		  credentials: "same-origin"
-    	})
+				request_content("POST", JSON.stringify(member)))
 	.then(data=>data.json())
 		.then(data=>{
 			console.log("from members edit")
 			console.log(data);
 			//console.log(data.local.username);
-			
+
 			if(!data.error){
-				
+
 
 				despatch(updateMember(data));
 			}
-		
+
 		});
 	}
 }
