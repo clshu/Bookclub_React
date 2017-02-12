@@ -1,4 +1,4 @@
-// create all actions associated with activeSubreddit
+import { request_content } from './utils';
 
 export function  setBooks(books){
 
@@ -17,16 +17,16 @@ export function  updateBook(rating,member){
 		 Member: { id: member.id, fname: member.fname,lname:member.lname,piclink:member.piclink}
 
 		}
-	
+
 	}
 }
 
 export function getBooks(){
 
-	
+
 	return (despatch) => {
 
-	fetch('/api/books')
+	fetch('/api/books', request_content("GET"))
 		.then(res=>res.json())
 		.then(data=>{
 			console.log(data);
@@ -38,18 +38,11 @@ export function getBooks(){
 
 export function saveRating(rating,member){
 
-	
+
 	return (despatch) => {
 
-	fetch('/api/books/newrating', 
-		{   
-		  method: "POST",
-		  body: JSON.stringify(rating),
-		  headers: {
-		    "Content-Type": "application/json"
-		  },
-		  credentials: "same-origin"
-    	})
+	fetch('/api/books/newrating',
+				request_content("POST", JSON.stringify(rating)))
 		.then(res=>res.json())
 		.then(data=>{
 			console.log(data);

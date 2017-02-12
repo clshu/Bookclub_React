@@ -47,10 +47,10 @@ app.use(logger('combined'));
 app.use(flash());
 // Routes
 app.use('/auth', auth);
-app.use('/api/members',members);
+app.use('/api/members', verifyToken, members);
 app.use('/api/events', verifyToken, events);
-app.use('/api/posts',posts);
-app.use('/api/books',books);
+app.use('/api/posts', verifyToken, posts);
+app.use('/api/books', verifyToken, books);
 app.use('/api/rsvps', verifyToken, rsvps);
 app.use('/api/uploadfile',uploadfile);
 // feature is for test purpose only
