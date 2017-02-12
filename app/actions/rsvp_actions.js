@@ -1,3 +1,4 @@
+import { request_content } from './utils';
 
 export function setRsvps(rsvps) {
   return {
@@ -10,15 +11,7 @@ export function getRsvps(eventId) {
   return (dispatch) => {
 
     fetch(`/api/rsvps/${eventId}`,
-      {
-        method: "GET",
-        headers: {
-          "authorization": localStorage.getItem('bcjwt'),
-          "Content-Type": "application/json"
-        },
-          credentials: "same-origin"
-      }
-    )
+          request_content("GET"))
     .then(data=>data.json())
     .then(data=>{
 			//console.log(data);
@@ -56,17 +49,7 @@ export function addNewRsvp(eventId, rsvp_response) {
 			//actionCreator = addRsvp;
 		}
 
-			fetch(route,
-			{
-				method: "POST",
-				body: JSON.stringify(rsvp),
-				headers: {
-					"authorization": localStorage.getItem('bcjwt'),
-					"Content-Type": "application/json"
-				},
-					credentials: "same-origin"
-			}
-		)
+		fetch(route, request_content("POST", JSON.stringify(rsvp)))
 		.then(data=>data.json())
     .then(data=>{
 			//console.log(data);

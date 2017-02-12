@@ -1,3 +1,4 @@
+import { request_content } from './utils';
 
 export function  setEvents(events){
 
@@ -34,7 +35,7 @@ export function getEvents(){
 
 	return (dispatch) => {
 
-	fetch('/api/events')
+	fetch('/api/events', request_content("GET"))
 		.then(res=>res.json())
 		.then(data=>{
 			//console.log(data);
@@ -52,7 +53,8 @@ export function getCurrentEvent(){
 	let currentMonth = year.toString() + '-' + month.toString();
 
 	return (dispatch) => {
-		fetch('/api/events/' + currentMonth)
+		fetch('/api/events/' + currentMonth,
+					request_content("GET"))
 			.then(res=>res.json())
 			.then(data=>{
 
@@ -68,15 +70,7 @@ export function getCurrentEvent(){
 export function addNewEvent (event) {
 return (dispatch, getState) => {
 	fetch('/api/events/new',
-	{
-		  method: "POST",
-		  body: JSON.stringify(event),
-		  headers: {
-				"authorization": localStorage.getItem('bcjwt'),
-		    "Content-Type": "application/json"
-		  },
-		  	credentials: "same-origin"
-    	})
+				request_content("POST", JSON.stringify(event)))
 			.then(data=>data.json())
 			.then(data=>{
 				if (data.error) {
