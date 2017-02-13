@@ -5,7 +5,7 @@ const path = require('path');
 const methodOverride = require('method-override');
 const logger = require('morgan');
 const models = require('./api/models');
-
+const favicon = require('serve-favicon');
 const passportService = require('./api/services/passport');
 const passport = require('passport');
 // By default passport use cookie and session is true, set it false here
@@ -24,7 +24,7 @@ const uploadfile = require('./api/routes/upload');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
-
+app.use(favicon(__dirname + '/public/favicon.ico'));
 // DB Setup
 // {force:true} drops the table everytime the server starts.
 models.sequelize.sync()
