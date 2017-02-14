@@ -12,11 +12,11 @@ router.use(function timeLog (req, res, next) {
 
 // route for home page
 router.get('/',function (req, res) {
-	
+
 		return models.Post.findAll({
 			include: [{
-        				model: models.Member
-         
+        				model: models.Member,
+                attributes: { exclude: ['password']}
      				 }
       			  ],
       	     order: [
@@ -24,12 +24,12 @@ router.get('/',function (req, res) {
 		})
 
 	.then(function(results){
-		console.log(results);	
+		console.log(results);
 			res.json(results);
-	});  	
-  
+	});
+
 });
-	
+
 
 
 // route for new post
@@ -38,9 +38,9 @@ router.post('/new', function (req, res) {
 	return models.Post.create(req.body)
 	.then(function(post){
 		res.json(post);
-	
+
 	});
-  
+
 });
 
 

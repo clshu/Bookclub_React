@@ -12,25 +12,25 @@ router.use(function timeLog (req, res, next) {
 
 // route for home page
 router.get('/',function (req, res) {
-	
+
 		models.Member.findAll({
-			
+			    attributes: { exclude: ['password']},
       		order: [
             ['fname']]
 		})
-	
+
 	.then(function(results){
-		console.log(results);	
+		console.log(results);
 			res.json(results);
-	});  	
-  
+	});
+
 });
 
 
 router.put('/edit',function (req, res) {
 
 		console.log(req.body);
-	
+
 		models.Member.update({
 
 		fname: req.body.fname,
@@ -45,22 +45,24 @@ router.put('/edit',function (req, res) {
 		favbook3: req.body.favbook3,
 		aboutme: req.body.aboutme,
 		piclink: req.body.piclink
-		
+
 		},
 
 		{where:{id:req.body.id}})
-      			  
-	
-	
+
+
+
 	.then(function(results){
-		
-		return models.Member.findById(req.body.id);
+
+		return models.Member.findById(req.body.id,
+      { attributes: { exclude: ['password']} }
+    );
 	})
 	.then(function(data){
-		console.log(data);	
+		console.log(data);
 		res.json(data);
 	})
-  
+
 });
 
 
