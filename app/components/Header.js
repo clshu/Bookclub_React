@@ -14,16 +14,19 @@ constructor(props){
     member : this.props.member
   }
 
-
+  this.handleSignout = this.handleSignout.bind(this);
 }
 
-
+handleSignout () {
+  localStorage.removeItem('bcjwt');
+  location.href="/bookclub.html";
+}
 componentWillReceiveProps(nextProps) {
 
   var member;
 
   if(  nextProps.members && nextProps.members.length){
- 
+
  console.log("here");
  member =nextProps.members.find(e=> e.id === nextProps.member.id);
 
@@ -35,17 +38,17 @@ componentWillReceiveProps(nextProps) {
 
 this.setState({
   member:member
-}); 
+});
 
 }
-  
+
 
 render(){
 
 var imglink;
 
 // if(  this.props.members && this.props.members.length){
- 
+
 //  console.log("here");
 //  member =this.props.members.find(e=> e.id === this.props.member.id);
 
@@ -60,9 +63,9 @@ var imglink;
   if(this.state.member.piclink){
 
     imglink = "/img/"+  this.state.member.piclink ;
-  
+
     }else{
-    
+
     imglink = "/img/unknown.png";
 
   }
@@ -79,7 +82,7 @@ return (
         <div className="navigation">
           <a href="#" className="brand-logo">Neighborhood Book Club</a>
               <ul className="right valign-wrapper">
-                  
+
                   {/*<li><a className="dropdown-button" href="#" data-activates="dropdown1">
                                     <i className="material-icons right">menu</i></a>
 
@@ -87,10 +90,10 @@ return (
 
                    <li  className="avatar white-text indent">
                             <img  src={ imglink } alt="" className="circle valign" width="40px" height="40px"/>
-                           
+
                   </li>
                   <li> {this.state.member.fname}</li>
-                  <li><a href="/bookclub.html"><button className="btn flat" >Sign out</button></a></li>
+                  <li><button className="btn flat" onClick={this.handleSignout}>Sign out</button></li>
 
               </ul>
         </div>
@@ -110,11 +113,11 @@ Header.propTypes = {
 
 function mapStateToProps(state){
   return {
-    
+
     member: state.auth.profile,
     members:state.members
 
-  } 
+  }
 }
 
 
