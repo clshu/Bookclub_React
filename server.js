@@ -30,6 +30,8 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 models.sequelize.sync()
 
 app.use(logger('dev'));
+
+app.use('/api/uploadfile',uploadfile);
 app.use(bodyParser.urlencoded({
 	extended: false
 }));
@@ -52,7 +54,7 @@ app.use('/api/events', verifyToken, events);
 app.use('/api/posts', verifyToken, posts);
 app.use('/api/books', verifyToken, books);
 app.use('/api/rsvps', verifyToken, rsvps);
-app.use('/api/uploadfile',uploadfile);
+
 // feature is for test purpose only
 app.use('/feature', verifyToken, feature);
 //app.use('/events', verifyToken, events);

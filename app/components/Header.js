@@ -85,12 +85,12 @@ return (
 
                   </li>*/}
 
-                   <li id="profile-img" className="avatar white-text">
+                   <li  className="avatar white-text indent">
                             <img  src={ imglink } alt="" className="circle valign" width="40px" height="40px"/>
                            
                   </li>
                   <li> {this.state.member.fname}</li>
-                  <li><button className="btn flat" href="/bookclub.html">Sign out</button></li>
+                  <li><a href="/bookclub.html"><button className="btn flat" >Sign out</button></a></li>
 
               </ul>
         </div>

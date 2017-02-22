@@ -31,7 +31,8 @@ constructor(props) {
 		aboutme: this.props.member.aboutme  || '',
 		jointdt: this.props.member.joindt  || '',
     piclink: this.props.member.piclink || '',
-    files:[]
+    files:[],
+    saveMsg:''
 
 	}
 	
@@ -98,7 +99,8 @@ handleSubmit(e){
 
 	});
 
-  this.setState({files:[]});
+  this.setState({files:[],
+    saveMsg:"Saved"});
 }
 
 onOpenClick() {
@@ -143,16 +145,16 @@ render(){
                       <div className="col sm3 m3 l3">
                           {/*<img src={ imglink } alt="" className="avatar" />*/}
 
-                           {(this.state.files.length > 0) && !this.state.piclink ? <div>
+                           {(this.state.files.length > 0) && !this.state.piclink ? <div className="profile-pic">
                           
-                          <div>{this.state.files.map((file) => <img className="card-image" src={`/img/${file.name}`} /> )}</div>
+                          <div>{this.state.files.map((file) => <img className="card-image profile-pic" src={`/img/${file.name}`} /> )}</div>
                           </div> : null}
 
-                          { this.state.piclink ? <div><img className="card-image" src={`/img/${this.state.piclink}`} /></div>: null}
+                          { this.state.piclink ? <div><img className="card-image profile-pic" src={`/img/${this.state.piclink}`} /></div>: null}
 
                       </div>
-                      { !this.state.files.length?<Dropzone disableClick ={false} multiple={false} accept={'image/*'} onDrop={this.dropHandler} >
-       					          <div> Drop/Click to add new photo. </div >
+                      { !this.state.files.length?<Dropzone disableClick ={false} multiple={false} accept={'image/*'} style={{width:120, height:120}} onDrop={this.dropHandler} >
+       					          <div className="profile-pic indent"> Drop/Click to add new photo. </div >
       				        </Dropzone>:null}
                       
                                                 
@@ -164,6 +166,7 @@ render(){
                   <div className="row">
                 
                         <div className="container">
+                          <br/>
                           <p>Member since: { currentMember.joindt }</p>
                          
                            <input type="text" name= "fname" value={ this.state.fname } onChange={ this.handleChange} placeholder="First Name" /> 
@@ -188,6 +191,7 @@ render(){
                             <input type="text" name= "favbook3" value={ this.state.favbook3 } onChange={ this.handleChange} placeholder="Favorite Book" />
                          	<button className="btn" name="Save" onClick ={ this.handleSubmit }>Save</button>
                          	<button className="btn" name="Cancel" >Cancel</button>
+                          <p className="center"><i>{this.state.saveMsg}</i></p>
                         </div>
                      
                   </div>

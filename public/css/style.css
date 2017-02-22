@@ -170,6 +170,11 @@ ul, li {
 
 }
 
-#profile-img{
+.indent{
   margin-right: 10px;
 }
+
+.profile-pic{
+  width : 120px;
+  height: 120px;
+}-

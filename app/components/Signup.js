@@ -134,7 +134,13 @@ dropHandler(files) {
 	// return html to be rendered
 	render() {
 
+  let imglink;
+     
 
+  if(this.state.piclink){
+     imglink = "/img/"+  this.state.piclink ;
+
+  }
 
 		return (
 			<div className="row valign-wrapper">
@@ -165,7 +171,8 @@ dropHandler(files) {
                           <div className="center">{this.state.files.map((file) => <img  src={`/img/${file.name}`} /> )}</div>
                           </div> : null}
 
-                          { this.state.piclink ? <div className="center"><img src={`/img/${this.state.piclink}`} /></div>: null}
+                          { this.state.piclink ? <div className="center"><img className="profile-pic" src={imglink
+                          } /></div>: null}
 
                       </div>
                       { !this.state.files.length?
